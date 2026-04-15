@@ -242,9 +242,17 @@ function summaryRow(homeVal, label, awayVal) {
 }
 
 function renderBoxScoreTable(team, players) {
-  // Split into offense and defense
-  const offense = players.filter(p => ['QB', 'WR', 'RB', 'C', 'TE', 'OL'].includes(p.position));
-  const defense = players.filter(p => ['CB', 'S', 'LB', 'DE', 'DL', 'DT', 'SS', 'FS'].includes(p.position));
+  // Split into offense and defense (handles multi-position like "WR/CB")
+  const offPositions = ['QB', 'WR', 'RB', 'C', 'TE', 'OL', 'OC', 'ATH'];
+  const defPositions = ['CB', 'S', 'LB', 'DE', 'DL', 'DT', 'SS', 'FS', 'DB', 'NT', 'DC'];
+  const posTokens = p => (p.position || '').split(/[\/,]/);
+  const offense = players.filter(p => posTokens(p).some(t => offPositions.includes(t.trim().toUpperCase())));
+  const defense = players.filter(p => {
+    const tokens = posTokens(p);
+    const isOffense = tokens.some(t => offPositions.includes(t.trim().toUpperCase()));
+    const isDefense = tokens.some(t => defPositions.includes(t.trim().toUpperCase()));
+    return isDefense && !isOffense;
+  });
 
   let html = `
     <div class="boxscore-roster">

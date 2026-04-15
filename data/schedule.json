@@ -1,72 +1,64 @@
 [
   {
     "week": 1,
-    "date": "2026-04-11",
+    "date": "2026-05-17",
     "games": [
       {
-        "home": "3peat",
-        "away": "warriors",
-        "homeScore": 56,
-        "awayScore": 35,
-        "time": "9:00 AM",
-        "location": "Field A"
-      },
-      {
         "home": "all-madden",
-        "away": "team-palestine",
-        "homeScore": 35,
+        "away": "good-guys",
+        "homeScore": 42,
         "awayScore": 42,
         "time": "9:00 AM",
-        "location": "Field B"
-      },
-      {
-        "home": "b-squad",
-        "away": "tsa-most-wanted",
-        "homeScore": 21,
-        "awayScore": 56,
-        "time": "10:15 AM",
         "location": "Field A"
       },
       {
-        "home": "ballhawks",
-        "away": "prime-time",
-        "homeScore": 49,
-        "awayScore": 35,
-        "time": "10:15 AM",
+        "home": "darkside",
+        "away": "pali-gliders",
+        "homeScore": 42,
+        "awayScore": 21,
+        "time": "9:00 AM",
         "location": "Field B"
-      },
-      {
-        "home": "dbu",
-        "away": "otf",
-        "homeScore": 56,
-        "awayScore": 42,
-        "time": "11:30 AM",
-        "location": "Field A"
       },
       {
         "home": "desert-lions",
-        "away": "legion-of-boom",
-        "homeScore": 42,
-        "awayScore": 21,
-        "time": "11:30 AM",
+        "away": "warriors",
+        "homeScore": 21,
+        "awayScore": 42,
+        "time": "10:15 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "falestine-falcons",
+        "away": "warbred",
+        "homeScore": 14,
+        "awayScore": 14,
+        "time": "10:15 AM",
         "location": "Field B"
       },
       {
         "home": "gmob",
-        "away": "khamedizers",
+        "away": "pak-lions",
         "homeScore": 28,
-        "awayScore": 42,
-        "time": "12:45 PM",
+        "awayScore": 49,
+        "time": "11:30 AM",
         "location": "Field A"
+      },
+      {
+        "home": "k2",
+        "away": "lob",
+        "homeScore": 42,
+        "awayScore": 14,
+        "time": "11:30 AM",
+        "location": "Field B"
       }
     ]
   },
   {
     "week": 2,
-    "date": "2026-04-18",
+    "date": "2026-05-24",
     "games": [
       {
-        "home": "warriors",
+        "home": "pali-gliders",
         "away": "all-madden",
         "homeScore": null,
         "awayScore": null,
@@ -74,256 +66,170 @@
         "location": "Field A"
       },
       {
-        "home": "team-palestine",
-        "away": "b-squad",
+        "home": "warriors",
+        "away": "good-guys",
         "homeScore": null,
         "awayScore": null,
         "time": "9:00 AM",
         "location": "Field B"
       },
       {
-        "home": "tsa-most-wanted",
-        "away": "ballhawks",
+        "home": "warbred",
+        "away": "darkside",
         "homeScore": null,
         "awayScore": null,
         "time": "10:15 AM",
         "location": "Field A"
       },
       {
-        "home": "prime-time",
-        "away": "dbu",
+        "home": "pak-lions",
+        "away": "desert-lions",
         "homeScore": null,
         "awayScore": null,
         "time": "10:15 AM",
         "location": "Field B"
       },
       {
-        "home": "otf",
-        "away": "desert-lions",
+        "home": "lob",
+        "away": "falestine-falcons",
         "homeScore": null,
         "awayScore": null,
         "time": "11:30 AM",
         "location": "Field A"
       },
       {
-        "home": "legion-of-boom",
+        "home": "k2",
         "away": "gmob",
         "homeScore": null,
         "awayScore": null,
         "time": "11:30 AM",
         "location": "Field B"
-      },
-      {
-        "home": "khamedizers",
-        "away": "3peat",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "12:45 PM",
-        "location": "Field A"
       }
     ]
   },
   {
     "week": 3,
-    "date": "2026-04-25",
+    "date": "2026-05-31",
     "games": [
       {
-        "home": "3peat",
-        "away": "legion-of-boom",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "9:00 AM",
-        "location": "Field A"
-      },
-      {
         "home": "all-madden",
-        "away": "khamedizers",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "9:00 AM",
-        "location": "Field B"
-      },
-      {
-        "home": "b-squad",
         "away": "warriors",
         "homeScore": null,
         "awayScore": null,
+        "time": "9:00 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "pali-gliders",
+        "away": "warbred",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "9:00 AM",
+        "location": "Field B"
+      },
+      {
+        "home": "good-guys",
+        "away": "pak-lions",
+        "homeScore": null,
+        "awayScore": null,
         "time": "10:15 AM",
         "location": "Field A"
       },
       {
-        "home": "ballhawks",
-        "away": "team-palestine",
+        "home": "darkside",
+        "away": "lob",
         "homeScore": null,
         "awayScore": null,
         "time": "10:15 AM",
         "location": "Field B"
-      },
-      {
-        "home": "dbu",
-        "away": "tsa-most-wanted",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "11:30 AM",
-        "location": "Field A"
       },
       {
         "home": "desert-lions",
-        "away": "prime-time",
+        "away": "k2",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "11:30 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "falestine-falcons",
+        "away": "gmob",
         "homeScore": null,
         "awayScore": null,
         "time": "11:30 AM",
         "location": "Field B"
-      },
-      {
-        "home": "gmob",
-        "away": "otf",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "12:45 PM",
-        "location": "Field A"
       }
     ]
   },
   {
     "week": 4,
-    "date": "2026-05-02",
+    "date": "2026-06-07",
     "games": [
       {
-        "home": "otf",
-        "away": "3peat",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "9:00 AM",
-        "location": "Field A"
-      },
-      {
-        "home": "prime-time",
-        "away": "gmob",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "9:00 AM",
-        "location": "Field B"
-      },
-      {
-        "home": "tsa-most-wanted",
-        "away": "desert-lions",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "10:15 AM",
-        "location": "Field A"
-      },
-      {
-        "home": "team-palestine",
-        "away": "dbu",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "10:15 AM",
-        "location": "Field B"
-      },
-      {
-        "home": "warriors",
-        "away": "ballhawks",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "11:30 AM",
-        "location": "Field A"
-      },
-      {
-        "home": "khamedizers",
-        "away": "b-squad",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "11:30 AM",
-        "location": "Field B"
-      },
-      {
-        "home": "legion-of-boom",
+        "home": "warbred",
         "away": "all-madden",
         "homeScore": null,
         "awayScore": null,
-        "time": "12:45 PM",
+        "time": "9:00 AM",
         "location": "Field A"
+      },
+      {
+        "home": "pak-lions",
+        "away": "warriors",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "9:00 AM",
+        "location": "Field B"
+      },
+      {
+        "home": "lob",
+        "away": "pali-gliders",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "10:15 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "k2",
+        "away": "good-guys",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "10:15 AM",
+        "location": "Field B"
+      },
+      {
+        "home": "gmob",
+        "away": "darkside",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "11:30 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "falestine-falcons",
+        "away": "desert-lions",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "11:30 AM",
+        "location": "Field B"
       }
     ]
   },
   {
     "week": 5,
-    "date": "2026-05-09",
+    "date": "2026-06-14",
     "games": [
-      {
-        "home": "3peat",
-        "away": "prime-time",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "9:00 AM",
-        "location": "Field A"
-      },
       {
         "home": "all-madden",
-        "away": "otf",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "9:00 AM",
-        "location": "Field B"
-      },
-      {
-        "home": "b-squad",
-        "away": "legion-of-boom",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "10:15 AM",
-        "location": "Field A"
-      },
-      {
-        "home": "ballhawks",
-        "away": "khamedizers",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "10:15 AM",
-        "location": "Field B"
-      },
-      {
-        "home": "dbu",
-        "away": "warriors",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "11:30 AM",
-        "location": "Field A"
-      },
-      {
-        "home": "desert-lions",
-        "away": "team-palestine",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "11:30 AM",
-        "location": "Field B"
-      },
-      {
-        "home": "gmob",
-        "away": "tsa-most-wanted",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "12:45 PM",
-        "location": "Field A"
-      }
-    ]
-  },
-  {
-    "week": 6,
-    "date": "2026-05-16",
-    "games": [
-      {
-        "home": "tsa-most-wanted",
-        "away": "3peat",
+        "away": "pak-lions",
         "homeScore": null,
         "awayScore": null,
         "time": "9:00 AM",
         "location": "Field A"
       },
       {
-        "home": "team-palestine",
-        "away": "gmob",
+        "home": "warbred",
+        "away": "lob",
         "homeScore": null,
         "awayScore": null,
         "time": "9:00 AM",
@@ -331,105 +237,143 @@
       },
       {
         "home": "warriors",
+        "away": "k2",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "10:15 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "pali-gliders",
+        "away": "gmob",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "10:15 AM",
+        "location": "Field B"
+      },
+      {
+        "home": "good-guys",
+        "away": "falestine-falcons",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "11:30 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "darkside",
         "away": "desert-lions",
         "homeScore": null,
         "awayScore": null,
-        "time": "10:15 AM",
-        "location": "Field A"
-      },
-      {
-        "home": "khamedizers",
-        "away": "dbu",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "10:15 AM",
-        "location": "Field B"
-      },
-      {
-        "home": "legion-of-boom",
-        "away": "ballhawks",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "11:30 AM",
-        "location": "Field A"
-      },
-      {
-        "home": "otf",
-        "away": "b-squad",
-        "homeScore": null,
-        "awayScore": null,
         "time": "11:30 AM",
         "location": "Field B"
-      },
+      }
+    ]
+  },
+  {
+    "week": 6,
+    "date": "2026-06-21",
+    "games": [
       {
-        "home": "prime-time",
+        "home": "lob",
         "away": "all-madden",
         "homeScore": null,
         "awayScore": null,
-        "time": "12:45 PM",
+        "time": "9:00 AM",
         "location": "Field A"
+      },
+      {
+        "home": "k2",
+        "away": "pak-lions",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "9:00 AM",
+        "location": "Field B"
+      },
+      {
+        "home": "gmob",
+        "away": "warbred",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "10:15 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "falestine-falcons",
+        "away": "warriors",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "10:15 AM",
+        "location": "Field B"
+      },
+      {
+        "home": "desert-lions",
+        "away": "pali-gliders",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "11:30 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "darkside",
+        "away": "good-guys",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "11:30 AM",
+        "location": "Field B"
       }
     ]
   },
   {
     "week": 7,
-    "date": "2026-05-23",
+    "date": "2026-06-28",
     "games": [
       {
-        "home": "3peat",
-        "away": "team-palestine",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "9:00 AM",
-        "location": "Field A"
-      },
-      {
         "home": "all-madden",
-        "away": "tsa-most-wanted",
+        "away": "k2",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "9:00 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "lob",
+        "away": "gmob",
         "homeScore": null,
         "awayScore": null,
         "time": "9:00 AM",
         "location": "Field B"
       },
       {
-        "home": "b-squad",
-        "away": "prime-time",
+        "home": "pak-lions",
+        "away": "falestine-falcons",
         "homeScore": null,
         "awayScore": null,
         "time": "10:15 AM",
         "location": "Field A"
       },
       {
-        "home": "ballhawks",
-        "away": "otf",
+        "home": "warbred",
+        "away": "desert-lions",
         "homeScore": null,
         "awayScore": null,
         "time": "10:15 AM",
         "location": "Field B"
       },
       {
-        "home": "dbu",
-        "away": "legion-of-boom",
+        "home": "warriors",
+        "away": "darkside",
         "homeScore": null,
         "awayScore": null,
         "time": "11:30 AM",
         "location": "Field A"
       },
       {
-        "home": "desert-lions",
-        "away": "khamedizers",
+        "home": "pali-gliders",
+        "away": "good-guys",
         "homeScore": null,
         "awayScore": null,
         "time": "11:30 AM",
         "location": "Field B"
-      },
-      {
-        "home": "gmob",
-        "away": "warriors",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "12:45 PM",
-        "location": "Field A"
       }
     ]
   }
