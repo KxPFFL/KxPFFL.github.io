@@ -106,6 +106,12 @@ function renderSchedule(containerId) {
         </div>
     `;
 
+    if (week.tbd || week.games.length === 0) {
+      html += `<div class="game-card tbd-week"><div class="tbd-note">${week.note || 'Matchups TBD'}</div></div>`;
+      html += '</div>';
+      return;
+    }
+
     week.games.forEach(game => {
       const home = getTeam(game.home);
       const away = getTeam(game.away);

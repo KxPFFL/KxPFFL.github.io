@@ -5,9 +5,9 @@
     "logo": "images/All Madden.PNG",
     "wins": 0,
     "losses": 0,
-    "ties": 1,
-    "pointsFor": 42,
-    "pointsAgainst": 42,
+    "ties": 0,
+    "pointsFor": 0,
+    "pointsAgainst": 0,
     "roster": [
       {
         "number": 12,
@@ -15,35 +15,35 @@
         "position": "WR/CB",
         "passYards": 0,
         "rushYards": 0,
-        "receptions": 6,
-        "recYards": 36,
-        "touchdowns": 2,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 4
+        "flagPulls": 0
       },
       {
         "number": 11,
         "name": "Syed Ahmad",
         "position": "WR/CB",
         "passYards": 0,
-        "rushYards": 3,
-        "receptions": 2,
-        "recYards": 14,
-        "touchdowns": 2,
-        "interceptions": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 2
+        "flagPulls": 0
       },
       {
         "number": 1,
         "name": "Maaz Iqbal",
         "position": "QB",
-        "passYards": 231,
-        "rushYards": 13,
+        "passYards": 0,
+        "rushYards": 0,
         "receptions": 0,
         "recYards": 0,
-        "touchdowns": 1,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -53,26 +53,26 @@
         "name": "Amaan Patel",
         "position": "WR/CB",
         "passYards": 0,
-        "rushYards": 7,
-        "receptions": 1,
-        "recYards": 8,
-        "touchdowns": 1,
-        "interceptions": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 1
+        "flagPulls": 0
       },
       {
         "number": 7,
         "name": "Ali Amin",
         "position": "WR/CB",
         "passYards": 0,
-        "rushYards": 13,
-        "receptions": 5,
-        "recYards": 40,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 5
+        "flagPulls": 0
       },
       {
         "number": 92,
@@ -92,26 +92,26 @@
         "name": "Muneeb Qadri",
         "position": "RB/CB",
         "passYards": 0,
-        "rushYards": 5,
-        "receptions": 7,
-        "recYards": 119,
-        "touchdowns": 2,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 6
+        "flagPulls": 0
       },
       {
         "number": 27,
         "name": "Ali Mirza",
         "position": "WR/CB",
         "passYards": 0,
-        "rushYards": 6,
-        "receptions": 3,
-        "recYards": 21,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 2
+        "flagPulls": 0
       },
       {
         "number": 25,
@@ -123,8 +123,8 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 1,
-        "flagPulls": 1
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 44,
@@ -137,7 +137,7 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 4
+        "flagPulls": 0
       },
       {
         "number": 23,
@@ -162,47 +162,47 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 2,
-        "flagPulls": 2
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 24,
         "name": "Mustafa Khan",
         "position": "WR/FS",
         "passYards": 0,
-        "rushYards": 2,
-        "receptions": 1,
-        "recYards": 11,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 6
+        "flagPulls": 0
       },
       {
         "number": 0,
         "name": "Mohammad Kamran",
         "position": "OL/DL/WR",
         "passYards": 0,
-        "rushYards": 2,
-        "receptions": 5,
-        "recYards": 40,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 2,
-        "flagPulls": 1
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 9,
         "name": "Edward Boateng",
         "position": "WR/CB",
         "passYards": 0,
-        "rushYards": 7,
-        "receptions": 1,
-        "recYards": 18,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 5
+        "flagPulls": 0
       },
       {
         "number": 79,
@@ -214,8 +214,8 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 1,
-        "flagPulls": 1
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 97,
@@ -228,7 +228,7 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 1
+        "flagPulls": 0
       },
       {
         "number": 99,
@@ -254,7 +254,7 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 2
+        "flagPulls": 0
       }
     ]
   },
@@ -262,24 +262,24 @@
     "id": "darkside",
     "name": "Darkside",
     "logo": "images/Darkside.JPG",
-    "wins": 1,
+    "wins": 0,
     "losses": 0,
     "ties": 0,
-    "pointsFor": 42,
-    "pointsAgainst": 21,
+    "pointsFor": 0,
+    "pointsAgainst": 0,
     "roster": [
       {
         "number": 10,
         "name": "Hakeem Madani",
         "position": "WR/DB",
         "passYards": 0,
-        "rushYards": 13,
-        "receptions": 3,
-        "recYards": 48,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 6
+        "flagPulls": 0
       },
       {
         "number": 13,
@@ -299,9 +299,9 @@
         "name": "Eric Unti",
         "position": "WR",
         "passYards": 0,
-        "rushYards": 15,
-        "receptions": 2,
-        "recYards": 14,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
@@ -338,9 +338,9 @@
         "name": "Sufyaan Ajmeri",
         "position": "RB",
         "passYards": 0,
-        "rushYards": 3,
-        "receptions": 7,
-        "recYards": 35,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
@@ -350,12 +350,12 @@
         "number": 1,
         "name": "Adam Awad",
         "position": "QB",
-        "passYards": 240,
-        "rushYards": 5,
+        "passYards": 0,
+        "rushYards": 0,
         "receptions": 0,
         "recYards": 0,
-        "touchdowns": 4,
-        "interceptions": 2,
+        "touchdowns": 0,
+        "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
       },
@@ -377,10 +377,10 @@
         "name": "Faisal Khan",
         "position": "TE",
         "passYards": 0,
-        "rushYards": 12,
-        "receptions": 1,
-        "recYards": 11,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -396,7 +396,7 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 5
+        "flagPulls": 0
       },
       {
         "number": 27,
@@ -404,9 +404,9 @@
         "position": "WR/SB",
         "passYards": 0,
         "rushYards": 0,
-        "receptions": 5,
-        "recYards": 90,
-        "touchdowns": 2,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -442,13 +442,13 @@
         "name": "Abaad Bawany",
         "position": "WR/DB",
         "passYards": 0,
-        "rushYards": 8,
-        "receptions": 6,
-        "recYards": 36,
-        "touchdowns": 2,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 2
+        "flagPulls": 0
       },
       {
         "number": 62,
@@ -461,7 +461,7 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 1
+        "flagPulls": 0
       }
     ]
   },
@@ -470,20 +470,20 @@
     "name": "Desert Lions",
     "logo": "images/DesertLions.PNG",
     "wins": 0,
-    "losses": 1,
+    "losses": 0,
     "ties": 0,
-    "pointsFor": 21,
-    "pointsAgainst": 42,
+    "pointsFor": 0,
+    "pointsAgainst": 0,
     "roster": [
       {
         "number": 1,
         "name": "Imran Sabir",
         "position": "QB",
-        "passYards": 81,
-        "rushYards": 2,
+        "passYards": 0,
+        "rushYards": 0,
         "receptions": 0,
         "recYards": 0,
-        "touchdowns": 1,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -499,7 +499,7 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 1
+        "flagPulls": 0
       },
       {
         "number": 33,
@@ -512,16 +512,16 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 4
+        "flagPulls": 0
       },
       {
         "number": 88,
         "name": "Amer Wazwaz",
         "position": "C/TE",
         "passYards": 0,
-        "rushYards": 15,
-        "receptions": 2,
-        "recYards": 18,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
@@ -537,17 +537,17 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 1,
-        "flagPulls": 2
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 2,
         "name": "Samer Oda",
         "position": "ATH",
         "passYards": 0,
-        "rushYards": 15,
-        "receptions": 5,
-        "recYards": 70,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
@@ -558,23 +558,23 @@
         "name": "Sheryaar Khan",
         "position": "WR/CB/LB",
         "passYards": 0,
-        "rushYards": 13,
-        "receptions": 7,
-        "recYards": 84,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 2,
-        "flagPulls": 3
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 6,
         "name": "Ali Hakawati",
         "position": "ATH",
         "passYards": 0,
-        "rushYards": 13,
-        "receptions": 3,
-        "recYards": 33,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -584,22 +584,22 @@
         "name": "Armaan Ghouse",
         "position": "WR/DB",
         "passYards": 0,
-        "rushYards": 1,
-        "receptions": 7,
-        "recYards": 112,
-        "touchdowns": 2,
-        "interceptions": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 2
+        "flagPulls": 0
       },
       {
         "number": 7,
         "name": "Kiwi Alsalahi",
         "position": "WR",
         "passYards": 0,
-        "rushYards": 10,
-        "receptions": 1,
-        "recYards": 11,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
@@ -610,23 +610,23 @@
         "name": "Omar Hakawati",
         "position": "WR/DB",
         "passYards": 0,
-        "rushYards": 6,
-        "receptions": 2,
-        "recYards": 16,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 3
+        "flagPulls": 0
       },
       {
         "number": 11,
         "name": "Omar Omer",
         "position": "WR",
         "passYards": 0,
-        "rushYards": 8,
-        "receptions": 4,
-        "recYards": 28,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -636,10 +636,10 @@
         "name": "Umar Sabir",
         "position": "ATH",
         "passYards": 0,
-        "rushYards": 2,
-        "receptions": 2,
-        "recYards": 36,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -654,7 +654,7 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 1,
+        "sacks": 0,
         "flagPulls": 0
       },
       {
@@ -678,35 +678,35 @@
     "logo": "images/TeamPalestine.PNG",
     "wins": 0,
     "losses": 0,
-    "ties": 1,
-    "pointsFor": 14,
-    "pointsAgainst": 14,
+    "ties": 0,
+    "pointsFor": 0,
+    "pointsAgainst": 0,
     "roster": [
       {
         "number": 1,
         "name": "Adam Jaber",
         "position": "WR/CB",
         "passYards": 0,
-        "rushYards": 11,
-        "receptions": 3,
-        "recYards": 21,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 6
+        "flagPulls": 0
       },
       {
         "number": 3,
         "name": "Saleh Mustafa",
         "position": "WR/CB",
         "passYards": 0,
-        "rushYards": 14,
-        "receptions": 3,
-        "recYards": 21,
-        "touchdowns": 1,
-        "interceptions": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 5
+        "flagPulls": 0
       },
       {
         "number": 9,
@@ -714,51 +714,51 @@
         "position": "WR/CB",
         "passYards": 0,
         "rushYards": 0,
-        "receptions": 5,
-        "recYards": 85,
-        "touchdowns": 2,
-        "interceptions": 2,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 5
+        "flagPulls": 0
       },
       {
         "number": 24,
         "name": "Odeh Alshaikh",
         "position": "WR/CB",
         "passYards": 0,
-        "rushYards": 4,
-        "receptions": 6,
-        "recYards": 36,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 2
+        "flagPulls": 0
       },
       {
         "number": 0,
         "name": "Jaydin Kulafi",
         "position": "WR/CB",
         "passYards": 0,
-        "rushYards": 4,
-        "receptions": 6,
-        "recYards": 78,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 4
+        "flagPulls": 0
       },
       {
         "number": 10,
         "name": "Amir Biba",
         "position": "WR/CB",
         "passYards": 0,
-        "rushYards": 6,
-        "receptions": 6,
-        "recYards": 60,
-        "touchdowns": 2,
-        "interceptions": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 5
+        "flagPulls": 0
       },
       {
         "number": 55,
@@ -770,8 +770,8 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 1,
-        "flagPulls": 1
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 0,
@@ -797,7 +797,7 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 2
+        "flagPulls": 0
       },
       {
         "number": 73,
@@ -809,7 +809,7 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 1,
+        "sacks": 0,
         "flagPulls": 0
       },
       {
@@ -830,23 +830,23 @@
         "name": "Raafat Ayyad",
         "position": "CB/WR",
         "passYards": 0,
-        "rushYards": 5,
-        "receptions": 6,
-        "recYards": 54,
-        "touchdowns": 2,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 7
+        "flagPulls": 0
       },
       {
         "number": 8,
         "name": "Adam Musa",
         "position": "QB",
-        "passYards": 223,
+        "passYards": 0,
         "rushYards": 0,
         "receptions": 0,
         "recYards": 0,
-        "touchdowns": 1,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -858,179 +858,179 @@
     "name": "G-MOB",
     "logo": "images/GMOB.PNG",
     "wins": 0,
-    "losses": 1,
+    "losses": 0,
     "ties": 0,
-    "pointsFor": 28,
-    "pointsAgainst": 49,
+    "pointsFor": 0,
+    "pointsAgainst": 0,
     "roster": [
       {
         "number": 21,
         "name": "Izek Aburish",
         "position": "WR/DB",
         "passYards": 0,
-        "rushYards": 8,
-        "receptions": 3,
-        "recYards": 21,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 7
+        "flagPulls": 0
       },
       {
         "number": 2,
         "name": "Sobaan Azam",
         "position": "WR/DB",
         "passYards": 0,
-        "rushYards": 10,
-        "receptions": 3,
-        "recYards": 48,
-        "touchdowns": 1,
-        "interceptions": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 2
+        "flagPulls": 0
       },
       {
         "number": 4,
         "name": "Rory Hills",
         "position": "WR/DB",
         "passYards": 0,
-        "rushYards": 6,
-        "receptions": 4,
-        "recYards": 56,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 7
+        "flagPulls": 0
       },
       {
         "number": 1,
         "name": "Ifham Haq",
         "position": "WR/DB",
         "passYards": 0,
-        "rushYards": 6,
-        "receptions": 1,
-        "recYards": 13,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 2
+        "flagPulls": 0
       },
       {
         "number": 7,
         "name": "Amer Hamad",
         "position": "QB/WR/DB",
-        "passYards": 250,
-        "rushYards": 29,
+        "passYards": 0,
+        "rushYards": 0,
         "receptions": 0,
         "recYards": 0,
-        "touchdowns": 3,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 2
+        "flagPulls": 0
       },
       {
         "number": 10,
         "name": "Dylan Warden",
         "position": "QB/DB",
-        "passYards": 156,
-        "rushYards": 16,
+        "passYards": 0,
+        "rushYards": 0,
         "receptions": 0,
         "recYards": 0,
-        "touchdowns": 3,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 6
+        "flagPulls": 0
       },
       {
         "number": 13,
         "name": "Isa Hitchens",
         "position": "WR/DB",
         "passYards": 0,
-        "rushYards": 9,
-        "receptions": 4,
-        "recYards": 64,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 4
+        "flagPulls": 0
       },
       {
         "number": 33,
         "name": "Zan Hitchens",
         "position": "WR/DB",
         "passYards": 0,
-        "rushYards": 12,
-        "receptions": 4,
-        "recYards": 60,
-        "touchdowns": 2,
-        "interceptions": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 3
+        "flagPulls": 0
       },
       {
         "number": 3,
         "name": "Jalen Joseph",
         "position": "WR/DB",
         "passYards": 0,
-        "rushYards": 9,
-        "receptions": 5,
-        "recYards": 70,
-        "touchdowns": 1,
-        "interceptions": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 1
+        "flagPulls": 0
       },
       {
         "number": 11,
         "name": "Andrew Kamienski",
         "position": "WR/DB",
         "passYards": 0,
-        "rushYards": 6,
-        "receptions": 3,
-        "recYards": 27,
-        "touchdowns": 1,
-        "interceptions": 2,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 6
+        "flagPulls": 0
       },
       {
         "number": 6,
         "name": "Khori Blair",
         "position": "WR/DB",
         "passYards": 0,
-        "rushYards": 14,
-        "receptions": 4,
-        "recYards": 48,
-        "touchdowns": 2,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 8
+        "flagPulls": 0
       },
       {
         "number": 9,
         "name": "Adam Jalal",
         "position": "WR/DB",
         "passYards": 0,
-        "rushYards": 5,
-        "receptions": 7,
-        "recYards": 119,
-        "touchdowns": 2,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 5
+        "flagPulls": 0
       },
       {
         "number": 12,
         "name": "Nabeel Hai",
         "position": "WR/DB",
         "passYards": 0,
-        "rushYards": 10,
-        "receptions": 5,
-        "recYards": 75,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
-        "interceptions": 2,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 4
+        "flagPulls": 0
       },
       {
         "number": 68,
@@ -1042,7 +1042,7 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 2,
+        "sacks": 0,
         "flagPulls": 0
       },
       {
@@ -1069,20 +1069,20 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 1
+        "flagPulls": 0
       },
       {
         "number": 5,
         "name": "Jarod Thornton",
         "position": "TE/OL/DL",
         "passYards": 0,
-        "rushYards": 2,
-        "receptions": 5,
-        "recYards": 90,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 1,
-        "flagPulls": 2
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 0,
@@ -1095,20 +1095,20 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 2
+        "flagPulls": 0
       },
       {
         "number": 15,
         "name": "Mahmoud Shehadeh",
         "position": "TE/DL",
         "passYards": 0,
-        "rushYards": 12,
-        "receptions": 4,
-        "recYards": 48,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 5
+        "flagPulls": 0
       },
       {
         "number": 0,
@@ -1120,7 +1120,7 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 2,
+        "sacks": 0,
         "flagPulls": 0
       },
       {
@@ -1133,7 +1133,7 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 1,
+        "sacks": 0,
         "flagPulls": 0
       },
       {
@@ -1146,8 +1146,8 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 2,
-        "flagPulls": 1
+        "sacks": 0,
+        "flagPulls": 0
       }
     ]
   },
@@ -1155,24 +1155,24 @@
     "id": "k2",
     "name": "K2",
     "logo": "images/K2.JPG",
-    "wins": 1,
+    "wins": 0,
     "losses": 0,
     "ties": 0,
-    "pointsFor": 42,
-    "pointsAgainst": 14,
+    "pointsFor": 0,
+    "pointsAgainst": 0,
     "roster": [
       {
         "number": 12,
         "name": "Basel Abdallah",
         "position": "QB/DB",
-        "passYards": 183,
-        "rushYards": 23,
+        "passYards": 0,
+        "rushYards": 0,
         "receptions": 0,
         "recYards": 0,
-        "touchdowns": 2,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 1
+        "flagPulls": 0
       },
       {
         "number": 1,
@@ -1180,12 +1180,12 @@
         "position": "WR/DB",
         "passYards": 0,
         "rushYards": 0,
-        "receptions": 4,
-        "recYards": 56,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
-        "interceptions": 1,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 7
+        "flagPulls": 0
       },
       {
         "number": 0,
@@ -1211,7 +1211,7 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 1
+        "flagPulls": 0
       },
       {
         "number": 77,
@@ -1224,16 +1224,16 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 1
+        "flagPulls": 0
       },
       {
         "number": 87,
         "name": "Youssef El-Hakim",
         "position": "TE/WR",
         "passYards": 0,
-        "rushYards": 14,
-        "receptions": 3,
-        "recYards": 24,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
@@ -1244,26 +1244,26 @@
         "name": "Mustafa Akel",
         "position": "WR/DB",
         "passYards": 0,
-        "rushYards": 12,
-        "receptions": 3,
-        "recYards": 51,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
-        "interceptions": 2,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 7
+        "flagPulls": 0
       },
       {
         "number": 11,
         "name": "Noor Hassan",
         "position": "WR/DB",
         "passYards": 0,
-        "rushYards": 2,
-        "receptions": 3,
-        "recYards": 54,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 1
+        "flagPulls": 0
       },
       {
         "number": 4,
@@ -1283,10 +1283,10 @@
         "name": "Yousef Hussien",
         "position": "LB/WR",
         "passYards": 0,
-        "rushYards": 2,
-        "receptions": 3,
-        "recYards": 24,
-        "touchdowns": 2,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -1297,12 +1297,12 @@
         "position": "K/WR/DB",
         "passYards": 0,
         "rushYards": 0,
-        "receptions": 2,
-        "recYards": 16,
-        "touchdowns": 1,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 4
+        "flagPulls": 0
       },
       {
         "number": 99,
@@ -1315,20 +1315,20 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 2
+        "flagPulls": 0
       },
       {
         "number": 88,
         "name": "Mohammed Aqrabawi",
         "position": "DL/WR",
         "passYards": 0,
-        "rushYards": 6,
-        "receptions": 1,
-        "recYards": 14,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 2,
-        "flagPulls": 2
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 3,
@@ -1341,7 +1341,7 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 1
+        "flagPulls": 0
       },
       {
         "number": 2,
@@ -1352,35 +1352,35 @@
         "receptions": 0,
         "recYards": 0,
         "touchdowns": 0,
-        "interceptions": 1,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 2
+        "flagPulls": 0
       },
       {
         "number": 5,
         "name": "Yusuf Saleh",
         "position": "DB/WR",
         "passYards": 0,
-        "rushYards": 5,
-        "receptions": 7,
-        "recYards": 126,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 1
+        "flagPulls": 0
       },
       {
         "number": 19,
         "name": "Aleem Abdulla",
         "position": "S/RB",
         "passYards": 0,
-        "rushYards": 12,
-        "receptions": 3,
-        "recYards": 42,
-        "touchdowns": 1,
-        "interceptions": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 4
+        "flagPulls": 0
       }
     ]
   },
@@ -1389,36 +1389,36 @@
     "name": "LOB",
     "logo": "images/LegionOfBoom.PNG",
     "wins": 0,
-    "losses": 1,
+    "losses": 0,
     "ties": 0,
-    "pointsFor": 14,
-    "pointsAgainst": 42,
+    "pointsFor": 0,
+    "pointsAgainst": 0,
     "roster": [
       {
         "number": 17,
         "name": "Adam Elmosa",
         "position": "WR/S",
         "passYards": 0,
-        "rushYards": 7,
-        "receptions": 1,
-        "recYards": 14,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
-        "interceptions": 1,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 5
+        "flagPulls": 0
       },
       {
         "number": 2,
         "name": "Dean Elmosa",
         "position": "WR/DL",
         "passYards": 0,
-        "rushYards": 3,
-        "receptions": 7,
-        "recYards": 105,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 2
+        "flagPulls": 0
       },
       {
         "number": 1,
@@ -1430,8 +1430,8 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 1,
-        "flagPulls": 2
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 99,
@@ -1444,7 +1444,7 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 2
+        "flagPulls": 0
       },
       {
         "number": 3,
@@ -1457,46 +1457,46 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 2
+        "flagPulls": 0
       },
       {
         "number": 30,
         "name": "Gregory Hoard",
         "position": "WR/DL",
         "passYards": 0,
-        "rushYards": 13,
-        "receptions": 3,
-        "recYards": 15,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 3
+        "flagPulls": 0
       },
       {
         "number": 9,
         "name": "Khaled Salah",
         "position": "WR/CB",
         "passYards": 0,
-        "rushYards": 14,
-        "receptions": 3,
-        "recYards": 45,
-        "touchdowns": 2,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 7
+        "flagPulls": 0
       },
       {
         "number": 5,
         "name": "Othman Othman",
         "position": "WR/S",
         "passYards": 0,
-        "rushYards": 8,
-        "receptions": 2,
-        "recYards": 32,
-        "touchdowns": 1,
-        "interceptions": 2,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 8
+        "flagPulls": 0
       },
       {
         "number": 90,
@@ -1508,18 +1508,18 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 1,
-        "flagPulls": 2
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 7,
         "name": "Housam Abdallah",
         "position": "QB",
-        "passYards": 231,
-        "rushYards": 8,
+        "passYards": 0,
+        "rushYards": 0,
         "receptions": 0,
         "recYards": 0,
-        "touchdowns": 3,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -1529,13 +1529,13 @@
         "name": "Ammar Zorub",
         "position": "TE/DL",
         "passYards": 0,
-        "rushYards": 8,
-        "receptions": 7,
-        "recYards": 42,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 3
+        "flagPulls": 0
       },
       {
         "number": 23,
@@ -1547,8 +1547,8 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 1,
-        "flagPulls": 2
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 13,
@@ -1560,21 +1560,21 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 1,
-        "flagPulls": 2
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 24,
         "name": "Abdallah Qasem",
         "position": "WR/S",
         "passYards": 0,
-        "rushYards": 10,
-        "receptions": 1,
-        "recYards": 12,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 4
+        "flagPulls": 0
       },
       {
         "number": 10,
@@ -1587,7 +1587,7 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 1
+        "flagPulls": 0
       },
       {
         "number": 500,
@@ -1600,7 +1600,7 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 2
+        "flagPulls": 0
       },
       {
         "number": 4,
@@ -1613,7 +1613,7 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 4
+        "flagPulls": 0
       },
       {
         "number": 0,
@@ -1624,9 +1624,9 @@
         "receptions": 0,
         "recYards": 0,
         "touchdowns": 0,
-        "interceptions": 1,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 5
+        "flagPulls": 0
       }
     ]
   },
@@ -1634,11 +1634,11 @@
     "id": "pak-lions",
     "name": "PAK LIONS",
     "logo": "images/DBU.PNG",
-    "wins": 1,
+    "wins": 0,
     "losses": 0,
     "ties": 0,
-    "pointsFor": 49,
-    "pointsAgainst": 28,
+    "pointsFor": 0,
+    "pointsAgainst": 0,
     "roster": [
       {
         "number": 1,
@@ -1658,9 +1658,9 @@
         "name": "NATE ARE",
         "position": "ATH",
         "passYards": 0,
-        "rushYards": 7,
-        "receptions": 1,
-        "recYards": 13,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
@@ -1677,17 +1677,17 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 3
+        "flagPulls": 0
       },
       {
         "number": 10,
         "name": "HAMEED O",
         "position": "WR",
         "passYards": 0,
-        "rushYards": 10,
-        "receptions": 7,
-        "recYards": 84,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -1701,18 +1701,18 @@
         "receptions": 0,
         "recYards": 0,
         "touchdowns": 0,
-        "interceptions": 1,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 7
+        "flagPulls": 0
       },
       {
         "number": 7,
         "name": "KUNLE A.",
         "position": "RB",
         "passYards": 0,
-        "rushYards": 14,
-        "receptions": 7,
-        "recYards": 91,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
@@ -1723,39 +1723,39 @@
         "name": "JOSIAH LANDO",
         "position": "CB/WR",
         "passYards": 0,
-        "rushYards": 15,
-        "receptions": 6,
-        "recYards": 108,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 4
+        "flagPulls": 0
       },
       {
         "number": 45,
         "name": "LEITH L.",
         "position": "DL/TE",
         "passYards": 0,
-        "rushYards": 8,
-        "receptions": 7,
-        "recYards": 105,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 1,
-        "flagPulls": 5
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 87,
         "name": "FASIAL ISHAQUE",
         "position": "WR/RB/DB",
         "passYards": 0,
-        "rushYards": 14,
-        "receptions": 2,
-        "recYards": 18,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
-        "interceptions": 1,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 5
+        "flagPulls": 0
       },
       {
         "number": 21,
@@ -1768,16 +1768,16 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 5
+        "flagPulls": 0
       },
       {
         "number": 11,
         "name": "BRANDON MOORE",
         "position": "WR",
         "passYards": 0,
-        "rushYards": 2,
-        "receptions": 3,
-        "recYards": 30,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
@@ -1788,10 +1788,10 @@
         "name": "EFFONY SCALES",
         "position": "ATH",
         "passYards": 0,
-        "rushYards": 12,
-        "receptions": 2,
-        "recYards": 16,
-        "touchdowns": 2,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -1814,13 +1814,13 @@
         "name": "MARZELL WELLS",
         "position": "WR/DB",
         "passYards": 0,
-        "rushYards": 13,
-        "receptions": 1,
-        "recYards": 11,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
-        "interceptions": 1,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 8
+        "flagPulls": 0
       },
       {
         "number": 33,
@@ -1832,7 +1832,7 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 1,
+        "sacks": 0,
         "flagPulls": 0
       },
       {
@@ -1840,10 +1840,10 @@
         "name": "MYSHAWN ROLLINS",
         "position": "ATH",
         "passYards": 0,
-        "rushYards": 12,
-        "receptions": 7,
-        "recYards": 77,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -1858,8 +1858,8 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 2,
-        "flagPulls": 2
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 2,
@@ -1867,8 +1867,8 @@
         "position": "ATH",
         "passYards": 0,
         "rushYards": 0,
-        "receptions": 4,
-        "recYards": 48,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
@@ -1879,13 +1879,13 @@
         "name": "NAJEE S.",
         "position": "CB/RB",
         "passYards": 0,
-        "rushYards": 12,
-        "receptions": 3,
-        "recYards": 51,
-        "touchdowns": 1,
-        "interceptions": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 4
+        "flagPulls": 0
       },
       {
         "number": 56,
@@ -1897,8 +1897,8 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 1,
-        "flagPulls": 1
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 84,
@@ -1906,9 +1906,9 @@
         "position": "WR",
         "passYards": 0,
         "rushYards": 0,
-        "receptions": 4,
-        "recYards": 48,
-        "touchdowns": 1,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -1921,20 +1921,20 @@
     "logo": "images/OTF.PNG",
     "wins": 0,
     "losses": 0,
-    "ties": 1,
-    "pointsFor": 14,
-    "pointsAgainst": 14,
+    "ties": 0,
+    "pointsFor": 0,
+    "pointsAgainst": 0,
     "roster": [
       {
         "number": 0,
         "name": "Malik Kurdi",
         "position": "QB/ATH",
-        "passYards": 118,
-        "rushYards": 17,
+        "passYards": 0,
+        "rushYards": 0,
         "receptions": 0,
         "recYards": 0,
-        "touchdowns": 1,
-        "interceptions": 1,
+        "touchdowns": 0,
+        "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
       },
@@ -1943,37 +1943,37 @@
         "name": "Omar Shaibe",
         "position": "WR/S",
         "passYards": 0,
-        "rushYards": 4,
-        "receptions": 5,
-        "recYards": 65,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 1
+        "flagPulls": 0
       },
       {
         "number": 11,
         "name": "Yousef Shaibe",
         "position": "WR/S",
         "passYards": 0,
-        "rushYards": 1,
-        "receptions": 3,
-        "recYards": 30,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 4
+        "flagPulls": 0
       },
       {
         "number": 23,
         "name": "Hamzah Shaibe",
         "position": "QB",
-        "passYards": 250,
-        "rushYards": 3,
+        "passYards": 0,
+        "rushYards": 0,
         "receptions": 0,
         "recYards": 0,
-        "touchdowns": 3,
-        "interceptions": 2,
+        "touchdowns": 0,
+        "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
       },
@@ -1987,31 +1987,31 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 1,
-        "flagPulls": 4
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 13,
         "name": "Sami Salama",
         "position": "WR/S",
         "passYards": 0,
-        "rushYards": 7,
-        "receptions": 6,
-        "recYards": 42,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
-        "interceptions": 2,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 3
+        "flagPulls": 0
       },
       {
         "number": 6,
         "name": "Moe Aburmishan",
         "position": "TE",
         "passYards": 0,
-        "rushYards": 5,
-        "receptions": 4,
-        "recYards": 20,
-        "touchdowns": 2,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -2027,7 +2027,7 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 2
+        "flagPulls": 0
       },
       {
         "number": 33,
@@ -2039,8 +2039,8 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 2,
-        "flagPulls": 1
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 25,
@@ -2060,13 +2060,13 @@
         "name": "Yazan Aburmishan",
         "position": "WR/S",
         "passYards": 0,
-        "rushYards": 1,
-        "receptions": 4,
-        "recYards": 72,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 4
+        "flagPulls": 0
       },
       {
         "number": 56,
@@ -2079,7 +2079,7 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 1
+        "flagPulls": 0
       },
       {
         "number": 58,
@@ -2105,7 +2105,7 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 2
+        "flagPulls": 0
       },
       {
         "number": 55,
@@ -2118,7 +2118,7 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 1
+        "flagPulls": 0
       },
       {
         "number": 2,
@@ -2131,17 +2131,17 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 1
+        "flagPulls": 0
       },
       {
         "number": 81,
         "name": "Abdellah Farook",
         "position": "ATH",
         "passYards": 0,
-        "rushYards": 12,
-        "receptions": 3,
-        "recYards": 45,
-        "touchdowns": 2,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -2156,8 +2156,8 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 1,
-        "flagPulls": 2
+        "sacks": 0,
+        "flagPulls": 0
       }
     ]
   },
@@ -2165,21 +2165,21 @@
     "id": "warriors",
     "name": "Warriors",
     "logo": "images/Warrirors.PNG",
-    "wins": 1,
+    "wins": 0,
     "losses": 0,
     "ties": 0,
-    "pointsFor": 42,
-    "pointsAgainst": 21,
+    "pointsFor": 0,
+    "pointsAgainst": 0,
     "roster": [
       {
         "number": 7,
         "name": "Shaham Mumtaz",
         "position": "QB",
-        "passYards": 246,
-        "rushYards": 17,
+        "passYards": 0,
+        "rushYards": 0,
         "receptions": 0,
         "recYards": 0,
-        "touchdowns": 1,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -2189,13 +2189,13 @@
         "name": "Maaz Adnan",
         "position": "WR/CB",
         "passYards": 0,
-        "rushYards": 7,
-        "receptions": 7,
-        "recYards": 126,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 8
+        "flagPulls": 0
       },
       {
         "number": 2,
@@ -2208,16 +2208,16 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 4
+        "flagPulls": 0
       },
       {
         "number": 84,
         "name": "Luqman Ali",
         "position": "WR",
         "passYards": 0,
-        "rushYards": 1,
-        "receptions": 7,
-        "recYards": 77,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
@@ -2228,52 +2228,52 @@
         "name": "Sufyaan Ahmed",
         "position": "RB/CB",
         "passYards": 0,
-        "rushYards": 12,
-        "receptions": 4,
-        "recYards": 20,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
-        "interceptions": 2,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 8
+        "flagPulls": 0
       },
       {
         "number": 5,
         "name": "Husain Khan",
         "position": "TE/DE",
         "passYards": 0,
-        "rushYards": 15,
-        "receptions": 3,
-        "recYards": 33,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 2
+        "flagPulls": 0
       },
       {
         "number": 1,
         "name": "Abdullah Ajmeri",
         "position": "WR/CB",
         "passYards": 0,
-        "rushYards": 1,
-        "receptions": 2,
-        "recYards": 10,
-        "touchdowns": 2,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 1
+        "flagPulls": 0
       },
       {
         "number": 95,
         "name": "Haazim Patel",
         "position": "DE/TE",
         "passYards": 0,
-        "rushYards": 15,
-        "receptions": 1,
-        "recYards": 14,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 1,
-        "flagPulls": 1
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 6,
@@ -2286,16 +2286,16 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 4
+        "flagPulls": 0
       },
       {
         "number": 0,
         "name": "Hasan Ramzanali",
         "position": "WR",
         "passYards": 0,
-        "rushYards": 5,
-        "receptions": 1,
-        "recYards": 18,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
@@ -2306,10 +2306,10 @@
         "name": "Rayhaan Rahman",
         "position": "TE",
         "passYards": 0,
-        "rushYards": 7,
-        "receptions": 5,
-        "recYards": 30,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -2318,13 +2318,13 @@
         "number": 23,
         "name": "Muhammad Tariq",
         "position": "QB/DE",
-        "passYards": 110,
-        "rushYards": 30,
+        "passYards": 0,
+        "rushYards": 0,
         "receptions": 0,
         "recYards": 0,
-        "touchdowns": 2,
-        "interceptions": 2,
-        "sacks": 1,
+        "touchdowns": 0,
+        "interceptions": 0,
+        "sacks": 0,
         "flagPulls": 0
       },
       {
@@ -2336,9 +2336,9 @@
         "receptions": 0,
         "recYards": 0,
         "touchdowns": 0,
-        "interceptions": 1,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 2
+        "flagPulls": 0
       },
       {
         "number": 16,
@@ -2351,20 +2351,20 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 6
+        "flagPulls": 0
       },
       {
         "number": 72,
         "name": "Farooq Siddiqui",
         "position": "WR/CB/K",
         "passYards": 0,
-        "rushYards": 10,
-        "receptions": 3,
-        "recYards": 24,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 7
+        "flagPulls": 0
       },
       {
         "number": 58,
@@ -2389,8 +2389,8 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 2,
-        "flagPulls": 1
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 8,
@@ -2402,8 +2402,8 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 1,
-        "flagPulls": 2
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 69,
@@ -2429,7 +2429,7 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 3
+        "flagPulls": 0
       },
       {
         "number": 99,
@@ -2441,8 +2441,8 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 1,
-        "flagPulls": 4
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 63,
@@ -2468,7 +2468,7 @@
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 4
+        "flagPulls": 0
       }
     ]
   },
@@ -2477,36 +2477,36 @@
     "name": "Pali Gliders",
     "logo": "images/PrimeTime.PNG",
     "wins": 0,
-    "losses": 1,
+    "losses": 0,
     "ties": 0,
-    "pointsFor": 21,
-    "pointsAgainst": 42,
+    "pointsFor": 0,
+    "pointsAgainst": 0,
     "roster": [
       {
         "number": 3,
         "name": "Abdullah Basith",
         "position": "WR/CB",
         "passYards": 0,
-        "rushYards": 14,
-        "receptions": 4,
-        "recYards": 28,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
-        "interceptions": 1,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 5
+        "flagPulls": 0
       },
       {
         "number": 8,
         "name": "JT Beausoleil",
         "position": "WR/DB",
         "passYards": 0,
-        "rushYards": 5,
-        "receptions": 5,
-        "recYards": 85,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 5
+        "flagPulls": 0
       },
       {
         "number": 55,
@@ -2518,34 +2518,34 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 2,
-        "flagPulls": 2
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 9,
         "name": "Mohammad Ayesh",
         "position": "WR/CB",
         "passYards": 0,
-        "rushYards": 11,
-        "receptions": 2,
-        "recYards": 14,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
-        "interceptions": 1,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 1
+        "flagPulls": 0
       },
       {
         "number": 33,
         "name": "Abdelrahman Alyousef",
         "position": "DE/TE",
         "passYards": 0,
-        "rushYards": 15,
-        "receptions": 5,
-        "recYards": 50,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 2
+        "flagPulls": 0
       },
       {
         "number": 58,
@@ -2565,52 +2565,52 @@
         "name": "Mohamed Srour",
         "position": "WR/CB",
         "passYards": 0,
-        "rushYards": 2,
-        "receptions": 2,
-        "recYards": 28,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
-        "interceptions": 1,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 8
+        "flagPulls": 0
       },
       {
         "number": 7,
         "name": "Zack Ayesh",
         "position": "LB/WR",
         "passYards": 0,
-        "rushYards": 4,
-        "receptions": 7,
-        "recYards": 42,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 2,
-        "flagPulls": 3
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 1,
         "name": "Yehia Ayesh",
         "position": "QB/CB",
-        "passYards": 220,
-        "rushYards": 5,
+        "passYards": 0,
+        "rushYards": 0,
         "receptions": 0,
         "recYards": 0,
-        "touchdowns": 3,
-        "interceptions": 2,
+        "touchdowns": 0,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 7
+        "flagPulls": 0
       },
       {
         "number": 0,
         "name": "Omar Ayesh",
         "position": "WR/CB",
         "passYards": 0,
-        "rushYards": 6,
-        "receptions": 2,
-        "recYards": 26,
-        "touchdowns": 2,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 7
+        "flagPulls": 0
       },
       {
         "number": 90,
@@ -2622,21 +2622,21 @@
         "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
-        "sacks": 2,
-        "flagPulls": 1
+        "sacks": 0,
+        "flagPulls": 0
       },
       {
         "number": 0,
         "name": "Ahmad Ayesh",
         "position": "TE/DT",
         "passYards": 0,
-        "rushYards": 14,
-        "receptions": 4,
-        "recYards": 52,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 1
+        "flagPulls": 0
       },
       {
         "number": 69,
@@ -2660,9 +2660,9 @@
         "receptions": 0,
         "recYards": 0,
         "touchdowns": 0,
-        "interceptions": 1,
+        "interceptions": 0,
         "sacks": 0,
-        "flagPulls": 4
+        "flagPulls": 0
       }
     ]
   },
@@ -2672,19 +2672,19 @@
     "logo": "images/GoodGuys.JPG",
     "wins": 0,
     "losses": 0,
-    "ties": 1,
-    "pointsFor": 42,
-    "pointsAgainst": 42,
+    "ties": 0,
+    "pointsFor": 0,
+    "pointsAgainst": 0,
     "roster": [
       {
         "number": 30,
         "name": "Miz Miz",
         "position": "ATH",
         "passYards": 0,
-        "rushYards": 2,
-        "receptions": 3,
-        "recYards": 48,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -2694,9 +2694,9 @@
         "name": "Weezy",
         "position": "ATH",
         "passYards": 0,
-        "rushYards": 7,
-        "receptions": 6,
-        "recYards": 42,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
@@ -2707,10 +2707,10 @@
         "name": "Melo",
         "position": "ATH",
         "passYards": 0,
-        "rushYards": 8,
-        "receptions": 4,
-        "recYards": 44,
-        "touchdowns": 2,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -2720,10 +2720,10 @@
         "name": "Joomz",
         "position": "ATH",
         "passYards": 0,
-        "rushYards": 7,
-        "receptions": 6,
-        "recYards": 78,
-        "touchdowns": 2,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -2733,9 +2733,9 @@
         "name": "Osama",
         "position": "ATH",
         "passYards": 0,
-        "rushYards": 1,
-        "receptions": 3,
-        "recYards": 54,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
@@ -2746,10 +2746,10 @@
         "name": "Shafiq",
         "position": "ATH",
         "passYards": 0,
-        "rushYards": 10,
-        "receptions": 7,
-        "recYards": 35,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -2759,10 +2759,10 @@
         "name": "A. Ashkar",
         "position": "ATH",
         "passYards": 0,
-        "rushYards": 6,
-        "receptions": 3,
-        "recYards": 18,
-        "touchdowns": 1,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -2772,10 +2772,10 @@
         "name": "Foot",
         "position": "ATH",
         "passYards": 0,
-        "rushYards": 6,
-        "receptions": 6,
-        "recYards": 60,
-        "touchdowns": 2,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0
@@ -2785,9 +2785,9 @@
         "name": "Said",
         "position": "ATH",
         "passYards": 0,
-        "rushYards": 14,
-        "receptions": 4,
-        "recYards": 44,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
         "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
@@ -2798,10 +2798,10 @@
         "name": "Harper",
         "position": "ATH",
         "passYards": 0,
-        "rushYards": 7,
-        "receptions": 3,
-        "recYards": 21,
-        "touchdowns": 2,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
         "interceptions": 0,
         "sacks": 0,
         "flagPulls": 0

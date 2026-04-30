@@ -692,6 +692,18 @@ img { max-width: 100%; display: block; }
 
 .game-card:hover { border-color: var(--accent); }
 
+.game-card.tbd-week {
+  justify-content: center;
+  background: transparent;
+  border-style: dashed;
+}
+
+.tbd-note {
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 0.95rem;
+}
+
 .game-team {
   display: flex;
   align-items: center;
