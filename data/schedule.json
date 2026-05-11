@@ -13,7 +13,7 @@
       },
       {
         "home": "pali-gliders",
-        "away": "good-guys",
+        "away": "we-dem-boyz",
         "homeScore": null,
         "awayScore": null,
         "time": "10:30 AM",
@@ -36,16 +36,16 @@
         "location": "Field A"
       },
       {
-        "home": "gmob",
-        "away": "all-madden",
+        "home": "pak-lions",
+        "away": "warriors",
         "homeScore": null,
         "awayScore": null,
         "time": "1:30 PM",
         "location": "Field A"
       },
       {
-        "home": "pak-lions",
-        "away": "warriors",
+        "home": "gmob",
+        "away": "all-madden",
         "homeScore": null,
         "awayScore": null,
         "time": "2:30 PM",
@@ -74,19 +74,11 @@
         "location": "Field A"
       },
       {
-        "home": "pak-lions",
-        "away": "pali-gliders",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "11:30 AM",
-        "location": "Field A"
-      },
-      {
         "home": "lob",
         "away": "desert-lions",
         "homeScore": null,
         "awayScore": null,
-        "time": "12:30 PM",
+        "time": "11:30 AM",
         "location": "Field A"
       },
       {
@@ -94,12 +86,20 @@
         "away": "all-madden",
         "homeScore": null,
         "awayScore": null,
+        "time": "12:30 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "pak-lions",
+        "away": "pali-gliders",
+        "homeScore": null,
+        "awayScore": null,
         "time": "1:30 PM",
         "location": "Field A"
       },
       {
-        "home": "good-guys",
-        "away": "gmob",
+        "home": "gmob",
+        "away": "we-dem-boyz",
         "homeScore": null,
         "awayScore": null,
         "time": "2:30 PM",
@@ -159,8 +159,8 @@
         "location": "Field A"
       },
       {
-        "home": "good-guys",
-        "away": "warriors",
+        "home": "warriors",
+        "away": "we-dem-boyz",
         "homeScore": null,
         "awayScore": null,
         "time": "2:30 PM",
@@ -204,8 +204,8 @@
         "location": "Field A"
       },
       {
-        "home": "good-guys",
-        "away": "all-madden",
+        "home": "all-madden",
+        "away": "we-dem-boyz",
         "homeScore": null,
         "awayScore": null,
         "time": "12:30 PM",
@@ -282,7 +282,7 @@
       },
       {
         "home": "pak-lions",
-        "away": "good-guys",
+        "away": "we-dem-boyz",
         "homeScore": null,
         "awayScore": null,
         "time": "2:30 PM",
@@ -300,15 +300,15 @@
   {
     "week": 10,
     "date": "2026-08-02",
+    "games": [],
     "tbd": true,
-    "note": "Quarterfinals — Matchups TBD",
-    "games": []
+    "note": "Quarterfinals — Matchups TBD"
   },
   {
     "week": 11,
     "date": "2026-08-09",
+    "games": [],
     "tbd": true,
-    "note": "Semifinals & Championship — Matchups TBD",
-    "games": []
+    "note": "Semifinals & Championship — Matchups TBD"
   }
 ]

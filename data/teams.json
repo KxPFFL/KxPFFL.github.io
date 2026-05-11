@@ -675,7 +675,7 @@
   {
     "id": "falestine-falcons",
     "name": "Falestine Falcons",
-    "logo": "images/TeamPalestine.PNG",
+    "logo": "images/Falastinee Falcons .jpeg",
     "wins": 0,
     "losses": 0,
     "ties": 0,
@@ -1633,7 +1633,7 @@
   {
     "id": "pak-lions",
     "name": "PAK LIONS",
-    "logo": "images/DBU.PNG",
+    "logo": "images/Pak Lions.jpeg",
     "wins": 0,
     "losses": 0,
     "ties": 0,
@@ -1918,7 +1918,7 @@
   {
     "id": "warbred",
     "name": "WarBred",
-    "logo": "images/OTF.PNG",
+    "logo": "images/Warbred.jpeg",
     "wins": 0,
     "losses": 0,
     "ties": 0,
@@ -2667,8 +2667,8 @@
     ]
   },
   {
-    "id": "good-guys",
-    "name": "Good Guys",
+    "id": "we-dem-boyz",
+    "name": "We Dem Boyz",
     "logo": "images/GoodGuys.JPG",
     "wins": 0,
     "losses": 0,
