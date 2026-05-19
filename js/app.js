@@ -116,25 +116,42 @@ function renderSchedule(containerId) {
       const home = getTeam(game.home);
       const away = getTeam(game.away);
       const played = game.homeScore !== null;
+      const noContest = !!game.noContest;
 
       const clickAttr = played
         ? `onclick="showGameDetail(${week.week}, '${game.home}', '${game.away}')" style="cursor:pointer;"`
         : '';
 
+      const homeWon = played && game.homeScore > game.awayScore;
+      const awayWon = played && game.awayScore > game.homeScore;
+      const homeBadge = homeWon ? '<span class="result-badge result-win">W</span>'
+                       : awayWon ? '<span class="result-badge result-loss">L</span>' : '';
+      const awayBadge = awayWon ? '<span class="result-badge result-win">W</span>'
+                       : homeWon ? '<span class="result-badge result-loss">L</span>' : '';
+
+      let scoreHtml;
+      if (noContest) {
+        scoreHtml = `<span class="no-contest-badge">No Contest</span>`;
+      } else if (played) {
+        scoreHtml = `<div class="score">${game.homeScore} - ${game.awayScore}</div>`;
+      } else {
+        scoreHtml = `<span class="upcoming-badge">Upcoming</span>`;
+      }
+
       html += `
-        <div class="game-card ${played ? 'game-played' : ''}" ${clickAttr}>
+        <div class="game-card ${played ? 'game-played' : ''} ${noContest ? 'game-no-contest' : ''}" ${clickAttr}>
           <div class="game-team">
             ${teamLogo(home, 32)}
             <span>${home.name}</span>
+            ${homeBadge}
           </div>
           <div class="game-score">
-            ${played
-              ? `<div class="score">${game.homeScore} - ${game.awayScore}</div>`
-              : `<span class="upcoming-badge">Upcoming</span>`
-            }
+            ${scoreHtml}
             <div class="game-time">${game.time} &middot; ${game.location}</div>
+            ${noContest ? `<div class="no-contest-reason">${game.noContestReason || ''}</div>` : ''}
           </div>
           <div class="game-team away">
+            ${awayBadge}
             <span>${away.name}</span>
             ${teamLogo(away, 32)}
           </div>
