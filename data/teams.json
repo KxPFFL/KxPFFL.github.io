@@ -2017,7 +2017,7 @@
     "pointsAgainst": 0,
     "roster": [
       {
-        "number": 1,
+        "number": 0,
         "name": "Malik Kurdi",
         "position": "QB/ATH",
         "passYards": 0,
@@ -2030,7 +2030,7 @@
         "flagPulls": 0
       },
       {
-        "number": 2,
+        "number": 1,
         "name": "Omar Shaibe",
         "position": "WR/DB",
         "passYards": 0,
@@ -2043,7 +2043,7 @@
         "flagPulls": 0
       },
       {
-        "number": 3,
+        "number": 11,
         "name": "Yousef Shaibe",
         "position": "WR/DB",
         "passYards": 0,
@@ -2056,7 +2056,7 @@
         "flagPulls": 0
       },
       {
-        "number": 4,
+        "number": 23,
         "name": "Hamzah Shaibe",
         "position": "QB",
         "passYards": 0,
@@ -2069,7 +2069,7 @@
         "flagPulls": 0
       },
       {
-        "number": 5,
+        "number": 4,
         "name": "Ali Shaibe",
         "position": "LB",
         "passYards": 0,
@@ -2082,7 +2082,7 @@
         "flagPulls": 0
       },
       {
-        "number": 6,
+        "number": 13,
         "name": "Sami Salama",
         "position": "WR/DB",
         "passYards": 0,
@@ -2095,7 +2095,7 @@
         "flagPulls": 0
       },
       {
-        "number": 7,
+        "number": 6,
         "name": "Moe Aburmishan",
         "position": "TE/DB",
         "passYards": 0,
@@ -2108,7 +2108,7 @@
         "flagPulls": 0
       },
       {
-        "number": 8,
+        "number": 54,
         "name": "Rick Naser",
         "position": "OL/DL",
         "passYards": 0,
@@ -2121,7 +2121,7 @@
         "flagPulls": 0
       },
       {
-        "number": 9,
+        "number": 33,
         "name": "Hamzah Qreini",
         "position": "OL/DL",
         "passYards": 0,
@@ -2134,7 +2134,7 @@
         "flagPulls": 0
       },
       {
-        "number": 10,
+        "number": 16,
         "name": "Ahmad Abdelqader",
         "position": "TE/OL/DL",
         "passYards": 0,
@@ -2147,7 +2147,7 @@
         "flagPulls": 0
       },
       {
-        "number": 11,
+        "number": 19,
         "name": "Yazan Aburmishan",
         "position": "WR/DB",
         "passYards": 0,
@@ -2160,7 +2160,7 @@
         "flagPulls": 0
       },
       {
-        "number": 12,
+        "number": 56,
         "name": "Ali Aburmishan",
         "position": "OL/DL",
         "passYards": 0,
@@ -2173,7 +2173,7 @@
         "flagPulls": 0
       },
       {
-        "number": 13,
+        "number": 58,
         "name": "Ibraheem Aburmishan",
         "position": "C",
         "passYards": 0,
@@ -2186,7 +2186,7 @@
         "flagPulls": 0
       },
       {
-        "number": 14,
+        "number": 99,
         "name": "Yahya Ghouleh",
         "position": "OL/DL",
         "passYards": 0,
@@ -2199,7 +2199,7 @@
         "flagPulls": 0
       },
       {
-        "number": 15,
+        "number": 55,
         "name": "Omar Almallah",
         "position": "OL/DL",
         "passYards": 0,
@@ -2212,7 +2212,7 @@
         "flagPulls": 0
       },
       {
-        "number": 16,
+        "number": 2,
         "name": "Aedan Abdelqader",
         "position": "OL/DL",
         "passYards": 0,
@@ -2225,9 +2225,22 @@
         "flagPulls": 0
       },
       {
-        "number": 17,
+        "number": 81,
         "name": "Abdellah Farook",
         "position": "ATH/K",
+        "passYards": 0,
+        "rushYards": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "touchdowns": 0,
+        "interceptions": 0,
+        "sacks": 0,
+        "flagPulls": 0
+      },
+      {
+        "number": 69,
+        "name": "Sal Ahmad",
+        "position": "DL/LB",
         "passYards": 0,
         "rushYards": 0,
         "receptions": 0,
