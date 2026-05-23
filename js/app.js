@@ -215,9 +215,6 @@ function showGameDetail(week, homeId, awayId) {
   const homeTotals = calcTeamTotals(game.homeStats);
   const awayTotals = calcTeamTotals(game.awayStats);
 
-  const homeTotalTDs = homeTotals.touchdowns + homeTotals.passTDs;
-  const awayTotalTDs = awayTotals.touchdowns + awayTotals.passTDs;
-
   html += `
     <div class="boxscore-summary">
       <div class="summary-row summary-header">
@@ -228,7 +225,7 @@ function showGameDetail(week, homeId, awayId) {
       ${summaryRow(homeTotals.passYards, 'Pass Yards', awayTotals.passYards)}
       ${summaryRow(homeTotals.passTDs, 'Pass TDs', awayTotals.passTDs)}
       ${summaryRow(homeTotals.rushYards, 'Rush Yards', awayTotals.rushYards)}
-      ${summaryRow(homeTotalTDs, 'Total TDs', awayTotalTDs)}
+      ${summaryRow(homeTotals.touchdowns, 'Total TDs', awayTotals.touchdowns)}
       ${summaryRow(homeTotals.interceptions, 'INTs Thrown', awayTotals.interceptions)}
       ${summaryRow(homeTotals.defInts, 'Def INTs', awayTotals.defInts)}
       ${summaryRow(homeTotals.pbu, 'PBU', awayTotals.pbu)}
@@ -493,6 +490,13 @@ function renderLeaders(containerId) {
   const categories = [
     { key: 'passYards', label: 'Passing Yards', icon: 'QBs' },
     { key: 'passTDs', label: 'Passing TDs', icon: 'QBs' },
+    {
+      key: 'compPct', label: 'Completion %', icon: 'QBs',
+      compute: p => (p.passAtt || 0) > 0 ? (p.passComp / p.passAtt) * 100 : 0,
+      filter: p => (p.passAtt || 0) >= 5,
+      format: v => v.toFixed(1) + '%',
+      meta: p => `${p.passComp}/${p.passAtt}`
+    },
     { key: 'passComp', label: 'Pass Completions', icon: 'QBs' },
     { key: 'rushYards', label: 'Rushing Yards', icon: 'RBs' },
     { key: 'receptions', label: 'Receptions', icon: 'WRs' },
@@ -526,9 +530,12 @@ function renderLeaders(containerId) {
 
   let html = '';
   categories.forEach(cat => {
+    const getValue = p => cat.compute ? cat.compute(p) : (p[cat.key] || 0);
+    const passesFilter = p => cat.filter ? cat.filter(p) : getValue(p) > 0;
+
     const sorted = [...allPlayers]
-      .filter(p => p[cat.key] > 0)
-      .sort((a, b) => b[cat.key] - a[cat.key])
+      .filter(passesFilter)
+      .sort((a, b) => getValue(b) - getValue(a))
       .slice(0, 10);
 
     if (sorted.length === 0) return;
@@ -542,6 +549,9 @@ function renderLeaders(containerId) {
     `;
 
     sorted.forEach((p, i) => {
+      const value = getValue(p);
+      const displayValue = cat.format ? cat.format(value) : value;
+      const metaExtra = cat.meta ? ` &middot; ${cat.meta(p)}` : '';
       html += `
         <div class="leader-row">
           <span class="leader-rank ${i < 3 ? 'top-3' : ''}">${i + 1}</span>
@@ -549,10 +559,10 @@ function renderLeaders(containerId) {
           <div class="leader-info">
             <div class="leader-name">${p.name}</div>
             <div class="leader-meta">
-              ${p.teamName} &middot; #${p.number} &middot; ${p.position}
+              ${p.teamName} &middot; #${p.number} &middot; ${p.position}${metaExtra}
             </div>
           </div>
-          <span class="leader-value">${p[cat.key]}</span>
+          <span class="leader-value">${displayValue}</span>
         </div>
       `;
     });
