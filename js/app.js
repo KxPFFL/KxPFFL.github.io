@@ -215,6 +215,9 @@ function showGameDetail(week, homeId, awayId) {
   const homeTotals = calcTeamTotals(game.homeStats);
   const awayTotals = calcTeamTotals(game.awayStats);
 
+  const homeTotalTDs = homeTotals.touchdowns + homeTotals.passTDs;
+  const awayTotalTDs = awayTotals.touchdowns + awayTotals.passTDs;
+
   html += `
     <div class="boxscore-summary">
       <div class="summary-row summary-header">
@@ -223,9 +226,12 @@ function showGameDetail(week, homeId, awayId) {
         <span class="summary-val">${awayTeam.name}</span>
       </div>
       ${summaryRow(homeTotals.passYards, 'Pass Yards', awayTotals.passYards)}
+      ${summaryRow(homeTotals.passTDs, 'Pass TDs', awayTotals.passTDs)}
       ${summaryRow(homeTotals.rushYards, 'Rush Yards', awayTotals.rushYards)}
-      ${summaryRow(homeTotals.touchdowns, 'Touchdowns', awayTotals.touchdowns)}
-      ${summaryRow(homeTotals.interceptions, 'Turnovers (INT)', awayTotals.interceptions)}
+      ${summaryRow(homeTotalTDs, 'Total TDs', awayTotalTDs)}
+      ${summaryRow(homeTotals.interceptions, 'INTs Thrown', awayTotals.interceptions)}
+      ${summaryRow(homeTotals.defInts, 'Def INTs', awayTotals.defInts)}
+      ${summaryRow(homeTotals.pbu, 'PBU', awayTotals.pbu)}
       ${summaryRow(homeTotals.sacks, 'Sacks', awayTotals.sacks)}
       ${summaryRow(homeTotals.flagPulls, 'Flag Pulls', awayTotals.flagPulls)}
     </div>
@@ -243,7 +249,12 @@ function showGameDetail(week, homeId, awayId) {
 }
 
 function calcTeamTotals(players) {
-  const totals = { passYards: 0, rushYards: 0, receptions: 0, recYards: 0, touchdowns: 0, interceptions: 0, sacks: 0, flagPulls: 0 };
+  const totals = {
+    passComp: 0, passAtt: 0, passYards: 0, passTDs: 0, interceptions: 0,
+    rushAtt: 0, rushYards: 0,
+    receptions: 0, recYards: 0, touchdowns: 0,
+    defInts: 0, pbu: 0, sacks: 0, flagPulls: 0
+  };
   players.forEach(p => {
     for (const key of Object.keys(totals)) {
       totals[key] += p[key] || 0;
@@ -265,17 +276,7 @@ function summaryRow(homeVal, label, awayVal) {
 }
 
 function renderBoxScoreTable(team, players) {
-  // Split into offense and defense (handles multi-position like "WR/CB")
-  const offPositions = ['QB', 'WR', 'RB', 'C', 'TE', 'OL', 'OC', 'ATH'];
-  const defPositions = ['CB', 'S', 'LB', 'DE', 'DL', 'DT', 'SS', 'FS', 'DB', 'NT', 'DC'];
-  const posTokens = p => (p.position || '').split(/[\/,]/);
-  const offense = players.filter(p => posTokens(p).some(t => offPositions.includes(t.trim().toUpperCase())));
-  const defense = players.filter(p => {
-    const tokens = posTokens(p);
-    const isOffense = tokens.some(t => offPositions.includes(t.trim().toUpperCase()));
-    const isDefense = tokens.some(t => defPositions.includes(t.trim().toUpperCase()));
-    return isDefense && !isOffense;
-  });
+  const dash = v => (v || 0) > 0 ? v : '-';
 
   let html = `
     <div class="boxscore-roster">
@@ -283,13 +284,6 @@ function renderBoxScoreTable(team, players) {
         ${teamLogo(team, 24)}
         <span>${team.name}</span>
       </div>
-  `;
-
-  if (offense.length > 0) {
-    const hasOffStats = offense.some(p => (p.passYards || 0) > 0 || (p.rushYards || 0) > 0 || (p.receptions || 0) > 0 || (p.touchdowns || 0) > 0);
-
-    html += `
-      <div class="boxscore-section-label">Offense</div>
       <div class="boxscore-table-wrap">
         <table class="boxscore-table">
           <thead>
@@ -297,73 +291,52 @@ function renderBoxScoreTable(team, players) {
               <th>#</th>
               <th>Player</th>
               <th>POS</th>
-              <th>Pass</th>
-              <th>Rush</th>
-              <th>Rec</th>
-              <th>Rec Yds</th>
-              <th>TD</th>
-            </tr>
-          </thead>
-          <tbody>
-    `;
-
-    offense.forEach(p => {
-      const hasStats = (p.passYards || 0) + (p.rushYards || 0) + (p.receptions || 0) + (p.recYards || 0) + (p.touchdowns || 0) > 0;
-      html += `
-        <tr class="${hasStats ? '' : 'no-stats'}">
-          <td class="player-number">${p.number}</td>
-          <td class="player-name">${p.name}</td>
-          <td>${p.position}</td>
-          <td>${p.passYards || '-'}</td>
-          <td>${p.rushYards || '-'}</td>
-          <td>${p.receptions || '-'}</td>
-          <td>${p.recYards || '-'}</td>
-          <td class="${(p.touchdowns || 0) > 0 ? 'stat-highlight' : ''}">${p.touchdowns || '-'}</td>
-        </tr>
-      `;
-    });
-
-    html += '</tbody></table></div>';
-  }
-
-  if (defense.length > 0) {
-    html += `
-      <div class="boxscore-section-label">Defense</div>
-      <div class="boxscore-table-wrap">
-        <table class="boxscore-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Player</th>
-              <th>POS</th>
+              <th>C/Att</th>
+              <th>Pass YDs</th>
+              <th>Pass TD</th>
               <th>INT</th>
+              <th>Rush Att</th>
+              <th>Rush YDs</th>
+              <th>Rec</th>
+              <th>Rec YDs</th>
+              <th>TD</th>
+              <th>Def INT</th>
+              <th>PBU</th>
               <th>Sacks</th>
               <th>Flag Pulls</th>
-              <th>TD</th>
             </tr>
           </thead>
           <tbody>
+  `;
+
+  players.forEach(p => {
+    const total = (p.passYards||0)+(p.passTDs||0)+(p.interceptions||0)+(p.rushYards||0)+
+                  (p.receptions||0)+(p.recYards||0)+(p.touchdowns||0)+(p.defInts||0)+
+                  (p.pbu||0)+(p.sacks||0)+(p.flagPulls||0);
+    const compAtt = (p.passAtt||0) > 0 ? `${p.passComp||0}/${p.passAtt}` : '-';
+    html += `
+      <tr class="${total > 0 ? '' : 'no-stats'}">
+        <td class="player-number">${p.number}</td>
+        <td class="player-name">${p.name}</td>
+        <td>${p.position}</td>
+        <td>${compAtt}</td>
+        <td>${dash(p.passYards)}</td>
+        <td class="${(p.passTDs||0) > 0 ? 'stat-highlight' : ''}">${dash(p.passTDs)}</td>
+        <td>${dash(p.interceptions)}</td>
+        <td>${dash(p.rushAtt)}</td>
+        <td>${dash(p.rushYards)}</td>
+        <td>${dash(p.receptions)}</td>
+        <td>${dash(p.recYards)}</td>
+        <td class="${(p.touchdowns||0) > 0 ? 'stat-highlight' : ''}">${dash(p.touchdowns)}</td>
+        <td class="${(p.defInts||0) > 0 ? 'stat-highlight' : ''}">${dash(p.defInts)}</td>
+        <td>${dash(p.pbu)}</td>
+        <td class="${(p.sacks||0) > 0 ? 'stat-highlight' : ''}">${dash(p.sacks)}</td>
+        <td>${dash(p.flagPulls)}</td>
+      </tr>
     `;
+  });
 
-    defense.forEach(p => {
-      const hasStats = (p.interceptions || 0) + (p.sacks || 0) + (p.flagPulls || 0) + (p.touchdowns || 0) > 0;
-      html += `
-        <tr class="${hasStats ? '' : 'no-stats'}">
-          <td class="player-number">${p.number}</td>
-          <td class="player-name">${p.name}</td>
-          <td>${p.position}</td>
-          <td class="${(p.interceptions || 0) > 0 ? 'stat-highlight' : ''}">${p.interceptions || '-'}</td>
-          <td class="${(p.sacks || 0) > 0 ? 'stat-highlight' : ''}">${p.sacks || '-'}</td>
-          <td>${p.flagPulls || '-'}</td>
-          <td class="${(p.touchdowns || 0) > 0 ? 'stat-highlight' : ''}">${p.touchdowns || '-'}</td>
-        </tr>
-      `;
-    });
-
-    html += '</tbody></table></div>';
-  }
-
-  html += '</div>';
+  html += '</tbody></table></div></div>';
   return html;
 }
 
@@ -404,8 +377,9 @@ function showTeamDetail(teamId) {
 
   const hasRoster = team.roster && team.roster.length > 0;
   const hasStats = team.roster && team.roster.some(p =>
-    p.passYards > 0 || p.rushYards > 0 || p.receptions > 0 || p.touchdowns > 0 ||
-    p.interceptions > 0 || p.sacks > 0 || p.flagPulls > 0
+    p.passYards > 0 || p.passTDs > 0 || p.passComp > 0 || p.rushYards > 0 ||
+    p.receptions > 0 || p.recYards > 0 || p.touchdowns > 0 ||
+    p.defInts > 0 || p.pbu > 0 || p.sacks > 0 || p.flagPulls > 0
   );
 
   let html = `
@@ -427,12 +401,17 @@ function showTeamDetail(teamId) {
             <th>Player</th>
             <th>Pos</th>
             ${hasStats ? `
+              <th>C/Att</th>
               <th>Pass Yds</th>
+              <th>Pass TD</th>
+              <th>INT</th>
+              <th>Rush Att</th>
               <th>Rush Yds</th>
               <th>Rec</th>
               <th>Rec Yds</th>
               <th>TD</th>
-              <th>INT</th>
+              <th>Def INT</th>
+              <th>PBU</th>
               <th>Sacks</th>
               <th>Flag Pulls</th>
             ` : ''}
@@ -442,18 +421,24 @@ function showTeamDetail(teamId) {
     `;
 
     team.roster.forEach(p => {
+      const compAtt = (p.passAtt || 0) > 0 ? `${p.passComp || 0}/${p.passAtt}` : '-';
       html += `
         <tr>
           <td class="player-number">${p.number}</td>
           <td class="player-name">${p.name}</td>
           <td>${p.position}</td>
           ${hasStats ? `
+            <td>${compAtt}</td>
             <td>${p.passYards || '-'}</td>
+            <td>${p.passTDs || '-'}</td>
+            <td>${p.interceptions || '-'}</td>
+            <td>${p.rushAtt || '-'}</td>
             <td>${p.rushYards || '-'}</td>
             <td>${p.receptions || '-'}</td>
             <td>${p.recYards || '-'}</td>
             <td>${p.touchdowns || '-'}</td>
-            <td>${p.interceptions || '-'}</td>
+            <td>${p.defInts || '-'}</td>
+            <td>${p.pbu || '-'}</td>
             <td>${p.sacks || '-'}</td>
             <td>${p.flagPulls || '-'}</td>
           ` : ''}
@@ -507,11 +492,14 @@ function renderLeaders(containerId) {
 
   const categories = [
     { key: 'passYards', label: 'Passing Yards', icon: 'QBs' },
+    { key: 'passTDs', label: 'Passing TDs', icon: 'QBs' },
+    { key: 'passComp', label: 'Pass Completions', icon: 'QBs' },
     { key: 'rushYards', label: 'Rushing Yards', icon: 'RBs' },
     { key: 'receptions', label: 'Receptions', icon: 'WRs' },
     { key: 'recYards', label: 'Receiving Yards', icon: 'WRs' },
-    { key: 'touchdowns', label: 'Touchdowns', icon: 'ALL' },
-    { key: 'interceptions', label: 'Interceptions', icon: 'DBs' },
+    { key: 'touchdowns', label: 'Rush/Rec TDs', icon: 'ALL' },
+    { key: 'defInts', label: 'Defensive INTs', icon: 'DBs' },
+    { key: 'pbu', label: 'Pass Breakups', icon: 'DBs' },
     { key: 'sacks', label: 'Sacks', icon: 'DL' },
     { key: 'flagPulls', label: 'Flag Pulls', icon: 'DEF' }
   ];
@@ -526,8 +514,9 @@ function renderLeaders(containerId) {
 
   // Check if any players have stats yet
   const hasAnyStats = allPlayers.some(p =>
-    p.passYards > 0 || p.rushYards > 0 || p.receptions > 0 || p.touchdowns > 0 ||
-    p.interceptions > 0 || p.sacks > 0 || p.flagPulls > 0
+    p.passYards > 0 || p.passTDs > 0 || p.passComp > 0 || p.rushYards > 0 ||
+    p.receptions > 0 || p.recYards > 0 || p.touchdowns > 0 ||
+    p.defInts > 0 || p.pbu > 0 || p.sacks > 0 || p.flagPulls > 0
   );
 
   if (!hasAnyStats) {
