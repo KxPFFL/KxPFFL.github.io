@@ -62,59 +62,110 @@
       {
         "home": "warbred",
         "away": "darkside",
-        "homeScore": null,
-        "awayScore": null,
+        "homeScore": 6,
+        "awayScore": 12,
         "time": "9:30 AM",
         "location": "Field A"
       },
       {
         "home": "k2",
         "away": "falestine-falcons",
-        "homeScore": null,
-        "awayScore": null,
+        "homeScore": 15,
+        "awayScore": 21,
         "time": "10:30 AM",
         "location": "Field A"
       },
       {
         "home": "lob",
         "away": "desert-lions",
-        "homeScore": null,
-        "awayScore": null,
+        "homeScore": 4,
+        "awayScore": 20,
         "time": "11:30 AM",
         "location": "Field A"
       },
       {
         "home": "warriors",
         "away": "all-madden",
-        "homeScore": null,
-        "awayScore": null,
+        "homeScore": 20,
+        "awayScore": 0,
         "time": "12:30 PM",
         "location": "Field A"
       },
       {
         "home": "pak-lions",
         "away": "pali-gliders",
-        "homeScore": null,
-        "awayScore": null,
+        "homeScore": 6,
+        "awayScore": 0,
         "time": "1:30 PM",
-        "location": "Field A"
+        "location": "Field A",
+        "forfeit": true,
+        "forfeitReason": "Pak Lions awarded win — Pali Gliders no-contest carryover"
       },
       {
         "home": "gmob",
         "away": "good-guys",
-        "homeScore": null,
-        "awayScore": null,
+        "homeScore": 6,
+        "awayScore": 0,
         "time": "2:30 PM",
-        "location": "Field A"
+        "location": "Field A",
+        "forfeit": true,
+        "forfeitReason": "G-MOB awarded win — Good Guys no-contest carryover"
       }
     ]
   },
   {
     "week": 3,
     "date": "2026-05-31",
-    "games": [],
-    "tbd": true,
-    "note": "Cross-Conference Play — Matchups TBD"
+    "games": [
+      {
+        "home": "warbred",
+        "away": "all-madden",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "9:30 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "darkside",
+        "away": "good-guys",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "10:30 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "falestine-falcons",
+        "away": "gmob",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "11:30 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "pak-lions",
+        "away": "lob",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "12:30 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "pali-gliders",
+        "away": "k2",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "1:30 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "warriors",
+        "away": "desert-lions",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "2:30 PM",
+        "location": "Field A"
+      }
+    ]
   },
   {
     "week": 4,

@@ -117,11 +117,7 @@ function renderSchedule(containerId) {
       const away = getTeam(game.away);
       const played = game.homeScore !== null;
       const noContest = !!game.noContest;
-
-      const clickAttr = played
-        ? `onclick="showGameDetail(${week.week}, '${game.home}', '${game.away}')" style="cursor:pointer;"`
-        : '';
-
+      const forfeit = !!game.forfeit;
       const homeWon = played && game.homeScore > game.awayScore;
       const awayWon = played && game.awayScore > game.homeScore;
       const homeBadge = homeWon ? '<span class="result-badge result-win">W</span>'
@@ -132,14 +128,22 @@ function renderSchedule(containerId) {
       let scoreHtml;
       if (noContest) {
         scoreHtml = `<span class="no-contest-badge">No Contest</span>`;
+      } else if (forfeit) {
+        scoreHtml = `<div class="score">${game.homeScore} - ${game.awayScore}</div><span class="forfeit-badge">Forfeit</span>`;
       } else if (played) {
         scoreHtml = `<div class="score">${game.homeScore} - ${game.awayScore}</div>`;
       } else {
         scoreHtml = `<span class="upcoming-badge">Upcoming</span>`;
       }
 
+      // Forfeit games don't have box scores (no stats recorded)
+      const showBoxScore = played && !forfeit;
+      const cardClickAttr = showBoxScore
+        ? `onclick="showGameDetail(${week.week}, '${game.home}', '${game.away}')" style="cursor:pointer;"`
+        : '';
+
       html += `
-        <div class="game-card ${played ? 'game-played' : ''} ${noContest ? 'game-no-contest' : ''}" ${clickAttr}>
+        <div class="game-card ${played ? 'game-played' : ''} ${noContest ? 'game-no-contest' : ''} ${forfeit ? 'game-forfeit' : ''}" ${cardClickAttr}>
           <div class="game-team">
             ${teamLogo(home, 32)}
             <span>${home.name}</span>
@@ -149,13 +153,14 @@ function renderSchedule(containerId) {
             ${scoreHtml}
             <div class="game-time">${game.time} &middot; ${game.location}</div>
             ${noContest ? `<div class="no-contest-reason">${game.noContestReason || ''}</div>` : ''}
+            ${forfeit ? `<div class="no-contest-reason">${game.forfeitReason || ''}</div>` : ''}
           </div>
           <div class="game-team away">
             ${awayBadge}
             <span>${away.name}</span>
             ${teamLogo(away, 32)}
           </div>
-          ${played ? '<div class="game-expand-hint">View Box Score</div>' : ''}
+          ${showBoxScore ? '<div class="game-expand-hint">View Box Score</div>' : ''}
         </div>
       `;
     });
