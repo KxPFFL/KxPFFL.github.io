@@ -220,6 +220,9 @@ function showGameDetail(week, homeId, awayId) {
   const homeTotals = calcTeamTotals(game.homeStats);
   const awayTotals = calcTeamTotals(game.awayStats);
 
+  const homeTotalTDs = homeTotals.rushTDs + homeTotals.recTDs + homeTotals.defTDs;
+  const awayTotalTDs = awayTotals.rushTDs + awayTotals.recTDs + awayTotals.defTDs;
+
   html += `
     <div class="boxscore-summary">
       <div class="summary-row summary-header">
@@ -230,7 +233,10 @@ function showGameDetail(week, homeId, awayId) {
       ${summaryRow(homeTotals.passYards, 'Pass Yards', awayTotals.passYards)}
       ${summaryRow(homeTotals.passTDs, 'Pass TDs', awayTotals.passTDs)}
       ${summaryRow(homeTotals.rushYards, 'Rush Yards', awayTotals.rushYards)}
-      ${summaryRow(homeTotals.touchdowns, 'Total TDs', awayTotals.touchdowns)}
+      ${summaryRow(homeTotals.rushTDs, 'Rush TDs', awayTotals.rushTDs)}
+      ${summaryRow(homeTotals.recTDs, 'Rec TDs', awayTotals.recTDs)}
+      ${summaryRow(homeTotals.defTDs, 'Def TDs', awayTotals.defTDs)}
+      ${summaryRow(homeTotalTDs, 'Total TDs', awayTotalTDs)}
       ${summaryRow(homeTotals.interceptions, 'INTs Thrown', awayTotals.interceptions)}
       ${summaryRow(homeTotals.defInts, 'Def INTs', awayTotals.defInts)}
       ${summaryRow(homeTotals.pbu, 'PBU', awayTotals.pbu)}
@@ -253,9 +259,9 @@ function showGameDetail(week, homeId, awayId) {
 function calcTeamTotals(players) {
   const totals = {
     passComp: 0, passAtt: 0, passYards: 0, passTDs: 0, interceptions: 0,
-    rushAtt: 0, rushYards: 0,
-    receptions: 0, recYards: 0, touchdowns: 0,
-    defInts: 0, pbu: 0, sacks: 0, flagPulls: 0
+    rushAtt: 0, rushYards: 0, rushTDs: 0,
+    receptions: 0, recYards: 0, recTDs: 0,
+    defInts: 0, defTDs: 0, pbu: 0, sacks: 0, flagPulls: 0
   };
   players.forEach(p => {
     for (const key of Object.keys(totals)) {
@@ -299,10 +305,12 @@ function renderBoxScoreTable(team, players) {
               <th>INT</th>
               <th>Rush Att</th>
               <th>Rush YDs</th>
+              <th>Rush TD</th>
               <th>Rec</th>
               <th>Rec YDs</th>
-              <th>TD</th>
+              <th>Rec TD</th>
               <th>Def INT</th>
+              <th>Def TD</th>
               <th>PBU</th>
               <th>Sacks</th>
               <th>Flag Pulls</th>
@@ -313,8 +321,8 @@ function renderBoxScoreTable(team, players) {
 
   players.forEach(p => {
     const total = (p.passYards||0)+(p.passTDs||0)+(p.interceptions||0)+(p.rushYards||0)+
-                  (p.receptions||0)+(p.recYards||0)+(p.touchdowns||0)+(p.defInts||0)+
-                  (p.pbu||0)+(p.sacks||0)+(p.flagPulls||0);
+                  (p.rushTDs||0)+(p.receptions||0)+(p.recYards||0)+(p.recTDs||0)+
+                  (p.defInts||0)+(p.defTDs||0)+(p.pbu||0)+(p.sacks||0)+(p.flagPulls||0);
     const compAtt = (p.passAtt||0) > 0 ? `${p.passComp||0}/${p.passAtt}` : '-';
     html += `
       <tr class="${total > 0 ? '' : 'no-stats'}">
@@ -327,10 +335,12 @@ function renderBoxScoreTable(team, players) {
         <td>${dash(p.interceptions)}</td>
         <td>${dash(p.rushAtt)}</td>
         <td>${dash(p.rushYards)}</td>
+        <td class="${(p.rushTDs||0) > 0 ? 'stat-highlight' : ''}">${dash(p.rushTDs)}</td>
         <td>${dash(p.receptions)}</td>
         <td>${dash(p.recYards)}</td>
-        <td class="${(p.touchdowns||0) > 0 ? 'stat-highlight' : ''}">${dash(p.touchdowns)}</td>
+        <td class="${(p.recTDs||0) > 0 ? 'stat-highlight' : ''}">${dash(p.recTDs)}</td>
         <td class="${(p.defInts||0) > 0 ? 'stat-highlight' : ''}">${dash(p.defInts)}</td>
+        <td class="${(p.defTDs||0) > 0 ? 'stat-highlight' : ''}">${dash(p.defTDs)}</td>
         <td>${dash(p.pbu)}</td>
         <td class="${(p.sacks||0) > 0 ? 'stat-highlight' : ''}">${dash(p.sacks)}</td>
         <td>${dash(p.flagPulls)}</td>
@@ -379,9 +389,9 @@ function showTeamDetail(teamId) {
 
   const hasRoster = team.roster && team.roster.length > 0;
   const hasStats = team.roster && team.roster.some(p =>
-    p.passYards > 0 || p.passTDs > 0 || p.passComp > 0 || p.rushYards > 0 ||
-    p.receptions > 0 || p.recYards > 0 || p.touchdowns > 0 ||
-    p.defInts > 0 || p.pbu > 0 || p.sacks > 0 || p.flagPulls > 0
+    p.passYards > 0 || p.passTDs > 0 || p.passComp > 0 || p.rushYards > 0 || p.rushTDs > 0 ||
+    p.receptions > 0 || p.recYards > 0 || p.recTDs > 0 ||
+    p.defInts > 0 || p.defTDs > 0 || p.pbu > 0 || p.sacks > 0 || p.flagPulls > 0
   );
 
   let html = `
@@ -409,10 +419,12 @@ function showTeamDetail(teamId) {
               <th>INT</th>
               <th>Rush Att</th>
               <th>Rush Yds</th>
+              <th>Rush TD</th>
               <th>Rec</th>
               <th>Rec Yds</th>
-              <th>TD</th>
+              <th>Rec TD</th>
               <th>Def INT</th>
+              <th>Def TD</th>
               <th>PBU</th>
               <th>Sacks</th>
               <th>Flag Pulls</th>
@@ -436,10 +448,12 @@ function showTeamDetail(teamId) {
             <td>${p.interceptions || '-'}</td>
             <td>${p.rushAtt || '-'}</td>
             <td>${p.rushYards || '-'}</td>
+            <td>${p.rushTDs || '-'}</td>
             <td>${p.receptions || '-'}</td>
             <td>${p.recYards || '-'}</td>
-            <td>${p.touchdowns || '-'}</td>
+            <td>${p.recTDs || '-'}</td>
             <td>${p.defInts || '-'}</td>
+            <td>${p.defTDs || '-'}</td>
             <td>${p.pbu || '-'}</td>
             <td>${p.sacks || '-'}</td>
             <td>${p.flagPulls || '-'}</td>
@@ -504,9 +518,11 @@ function renderLeaders(containerId) {
     },
     { key: 'passComp', label: 'Pass Completions', icon: 'QBs' },
     { key: 'rushYards', label: 'Rushing Yards', icon: 'RBs' },
+    { key: 'rushTDs', label: 'Rushing TDs', icon: 'RBs' },
     { key: 'receptions', label: 'Receptions', icon: 'WRs' },
     { key: 'recYards', label: 'Receiving Yards', icon: 'WRs' },
-    { key: 'touchdowns', label: 'Rush/Rec TDs', icon: 'ALL' },
+    { key: 'recTDs', label: 'Receiving TDs', icon: 'WRs' },
+    { key: 'defTDs', label: 'Defensive TDs', icon: 'DEF' },
     { key: 'defInts', label: 'Defensive INTs', icon: 'DBs' },
     { key: 'pbu', label: 'Pass Breakups', icon: 'DBs' },
     { key: 'sacks', label: 'Sacks', icon: 'DL' },
@@ -523,9 +539,9 @@ function renderLeaders(containerId) {
 
   // Check if any players have stats yet
   const hasAnyStats = allPlayers.some(p =>
-    p.passYards > 0 || p.passTDs > 0 || p.passComp > 0 || p.rushYards > 0 ||
-    p.receptions > 0 || p.recYards > 0 || p.touchdowns > 0 ||
-    p.defInts > 0 || p.pbu > 0 || p.sacks > 0 || p.flagPulls > 0
+    p.passYards > 0 || p.passTDs > 0 || p.passComp > 0 || p.rushYards > 0 || p.rushTDs > 0 ||
+    p.receptions > 0 || p.recYards > 0 || p.recTDs > 0 ||
+    p.defInts > 0 || p.defTDs > 0 || p.pbu > 0 || p.sacks > 0 || p.flagPulls > 0
   );
 
   if (!hasAnyStats) {
