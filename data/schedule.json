@@ -142,19 +142,19 @@
         "location": "Field A"
       },
       {
-        "home": "pak-lions",
-        "away": "lob",
-        "homeScore": null,
-        "awayScore": null,
-        "time": "1:30 PM",
-        "location": "Field A"
-      },
-      {
         "home": "pali-gliders",
         "away": "k2",
         "homeScore": null,
         "awayScore": null,
         "time": "12:30 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "pak-lions",
+        "away": "lob",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "1:30 PM",
         "location": "Field A"
       },
       {
