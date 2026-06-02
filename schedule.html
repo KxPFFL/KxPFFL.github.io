@@ -28,7 +28,13 @@
 
   <section class="section" style="padding-top: 2.5rem;">
     <h2 class="section-title">Season Schedule</h2>
-    <p style="color:var(--text-muted); margin-bottom:1.5rem;">All games and results for the current season.</p>
+    <p style="color:var(--text-muted); margin-bottom:1rem;">All games and results for the current season.</p>
+    <div class="schedule-filter-bar">
+      <label for="team-filter">Filter by team:</label>
+      <select id="team-filter" onchange="filterScheduleByTeam(this.value)">
+        <option value="all">All Teams</option>
+      </select>
+    </div>
     <div id="schedule"></div>
   </section>
 

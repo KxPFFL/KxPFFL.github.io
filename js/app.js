@@ -89,6 +89,26 @@ function renderStandings(containerId) {
 }
 
 /* ── Schedule ── */
+let scheduleFilterTeam = 'all';
+
+function filterScheduleByTeam(teamId) {
+  scheduleFilterTeam = teamId;
+  renderSchedule('schedule');
+}
+
+function populateTeamFilter() {
+  const select = document.getElementById('team-filter');
+  if (!select) return;
+  const sorted = [...teamsData].sort((a, b) => a.name.localeCompare(b.name));
+  sorted.forEach(t => {
+    const opt = document.createElement('option');
+    opt.value = t.id;
+    opt.textContent = t.name;
+    select.appendChild(opt);
+  });
+  select.value = scheduleFilterTeam;
+}
+
 function renderSchedule(containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
@@ -112,7 +132,17 @@ function renderSchedule(containerId) {
       return;
     }
 
-    week.games.forEach(game => {
+    const visibleGames = scheduleFilterTeam === 'all'
+      ? week.games
+      : week.games.filter(g => g.home === scheduleFilterTeam || g.away === scheduleFilterTeam);
+
+    if (visibleGames.length === 0) {
+      html += `<div class="game-card tbd-week"><div class="tbd-note">Bye Week</div></div>`;
+      html += '</div>';
+      return;
+    }
+
+    visibleGames.forEach(game => {
       const home = getTeam(game.home);
       const away = getTeam(game.away);
       const played = game.homeScore !== null;
@@ -324,8 +354,9 @@ function renderBoxScoreTable(team, players) {
                   (p.rushTDs||0)+(p.receptions||0)+(p.recYards||0)+(p.recTDs||0)+
                   (p.defInts||0)+(p.defTDs||0)+(p.pbu||0)+(p.sacks||0)+(p.flagPulls||0);
     const compAtt = (p.passAtt||0) > 0 ? `${p.passComp||0}/${p.passAtt}` : '-';
+    const playerArgs = `'${team.id}', ${p.number}, ${JSON.stringify(p.name).replace(/"/g, '&quot;')}`;
     html += `
-      <tr class="${total > 0 ? '' : 'no-stats'}">
+      <tr class="clickable-player ${total > 0 ? '' : 'no-stats'}" onclick="event.stopPropagation(); showPlayerInsights(${playerArgs})">
         <td class="player-number">${p.number}</td>
         <td class="player-name">${p.name}</td>
         <td>${p.position}</td>
@@ -436,8 +467,9 @@ function showTeamDetail(teamId) {
 
     team.roster.forEach(p => {
       const compAtt = (p.passAtt || 0) > 0 ? `${p.passComp || 0}/${p.passAtt}` : '-';
+      const playerArgs = `'${team.id}', ${p.number}, ${JSON.stringify(p.name).replace(/"/g, '&quot;')}`;
       html += `
-        <tr>
+        <tr class="clickable-player" onclick="showPlayerInsights(${playerArgs})">
           <td class="player-number">${p.number}</td>
           <td class="player-name">${p.name}</td>
           <td>${p.position}</td>
@@ -533,7 +565,7 @@ function renderLeaders(containerId) {
   const allPlayers = [];
   teamsData.forEach(team => {
     team.roster.forEach(player => {
-      allPlayers.push({ ...player, teamName: team.name, teamLogo: team.logo });
+      allPlayers.push({ ...player, teamId: team.id, teamName: team.name, teamLogo: team.logo });
     });
   });
 
@@ -573,8 +605,9 @@ function renderLeaders(containerId) {
       const value = getValue(p);
       const displayValue = cat.format ? cat.format(value) : value;
       const metaExtra = cat.meta ? ` &middot; ${cat.meta(p)}` : '';
+      const playerArgs = `'${p.teamId}', ${p.number}, ${JSON.stringify(p.name).replace(/"/g, '&quot;')}`;
       html += `
-        <div class="leader-row">
+        <div class="leader-row clickable-player" onclick="showPlayerInsights(${playerArgs})">
           <span class="leader-rank ${i < 3 ? 'top-3' : ''}">${i + 1}</span>
           <img class="team-logo" src="${p.teamLogo}" alt="${p.teamName}" style="width:22px; height:22px; margin-right:8px;">
           <div class="leader-info">
@@ -594,10 +627,309 @@ function renderLeaders(containerId) {
   container.innerHTML = html;
 }
 
+/* ── Player Insights ── */
+function findPlayer(teamId, number, name) {
+  const team = getTeam(teamId);
+  if (!team) return null;
+  const player = team.roster.find(p => p.number === number && p.name === name);
+  if (!player) return null;
+  return { player, team };
+}
+
+function getAllLeaguePlayers() {
+  const out = [];
+  teamsData.forEach(t => t.roster.forEach(p => out.push({ ...p, _team: t })));
+  return out;
+}
+
+function calculatePercentile(value, allValues) {
+  if (allValues.length === 0) return 0;
+  const lessThan = allValues.filter(v => v < value).length;
+  const equal = allValues.filter(v => v === value).length;
+  return Math.round(((lessThan + equal / 2) / allValues.length) * 100);
+}
+
+function getPlayerSkillPercentiles(player) {
+  const allPlayers = getAllLeaguePlayers();
+  const categories = [
+    { key: 'Passing',   getVal: p => (p.passYards || 0) + (p.passTDs || 0) * 25 },
+    { key: 'Rushing',   getVal: p => (p.rushYards || 0) + (p.rushTDs || 0) * 25 },
+    { key: 'Receiving', getVal: p => (p.recYards || 0) + (p.recTDs || 0) * 25 },
+    { key: 'Scoring',   getVal: p => (p.rushTDs || 0) + (p.recTDs || 0) + (p.defTDs || 0) },
+    { key: 'Coverage',  getVal: p => (p.defInts || 0) * 2 + (p.pbu || 0) },
+    { key: 'Pass Rush', getVal: p => p.sacks || 0 },
+    { key: 'Tackling',  getVal: p => p.flagPulls || 0 },
+  ];
+  return categories.map(cat => {
+    const playerValue = cat.getVal(player);
+    const allValues = allPlayers.map(p => cat.getVal(p));
+    return {
+      name: cat.key,
+      value: playerValue,
+      percentile: calculatePercentile(playerValue, allValues)
+    };
+  });
+}
+
+function renderRadarChart(skills) {
+  const size = 460;
+  const center = size / 2;
+  const maxRadius = 130;
+  const n = skills.length;
+  const angles = skills.map((_, i) => (i / n) * 2 * Math.PI - Math.PI / 2);
+
+  // Background rings (concentric polygons at 25, 50, 75, 100)
+  const rings = [25, 50, 75, 100].map(pct => {
+    const r = (pct / 100) * maxRadius;
+    const points = angles.map(a => `${center + Math.cos(a) * r},${center + Math.sin(a) * r}`).join(' ');
+    const fillClass = pct === 100 ? 'radar-ring-outer'
+                     : pct === 75 ? 'radar-ring-75'
+                     : pct === 50 ? 'radar-ring-50'
+                     : 'radar-ring-25';
+    return `<polygon points="${points}" class="radar-ring ${fillClass}" />`;
+  }).join('');
+
+  // Spokes
+  const spokes = angles.map(a => {
+    const x2 = center + Math.cos(a) * maxRadius;
+    const y2 = center + Math.sin(a) * maxRadius;
+    return `<line x1="${center}" y1="${center}" x2="${x2}" y2="${y2}" class="radar-spoke" />`;
+  }).join('');
+
+  // Player polygon
+  const playerPoints = skills.map((s, i) => {
+    const r = (Math.max(s.percentile, 3) / 100) * maxRadius;
+    const a = angles[i];
+    return `${center + Math.cos(a) * r},${center + Math.sin(a) * r}`;
+  }).join(' ');
+
+  // Dots at vertices
+  const dots = skills.map((s, i) => {
+    const r = (Math.max(s.percentile, 3) / 100) * maxRadius;
+    const a = angles[i];
+    return `<circle cx="${center + Math.cos(a) * r}" cy="${center + Math.sin(a) * r}" r="4" class="radar-dot" />`;
+  }).join('');
+
+  // Labels
+  const labels = skills.map((s, i) => {
+    const labelR = maxRadius + 40;
+    const x = center + Math.cos(angles[i]) * labelR;
+    const y = center + Math.sin(angles[i]) * labelR;
+    return `
+      <g transform="translate(${x},${y})">
+        <text class="radar-label-name" text-anchor="middle">${s.name}</text>
+        <text class="radar-label-pct" text-anchor="middle" dy="16">${ordinalSuffix(s.percentile)} Percentile</text>
+      </g>
+    `;
+  }).join('');
+
+  // Percentile markers (25, 50, 75, 100)
+  const markers = [25, 50, 75, 100].map(pct => {
+    const y = center - (pct / 100) * maxRadius;
+    return `<text x="${center}" y="${y}" class="radar-marker" text-anchor="middle" dy="3">${pct} PCTL</text>`;
+  }).join('');
+
+  return `
+    <svg class="radar-chart" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">
+      ${rings}
+      ${spokes}
+      <polygon points="${playerPoints}" class="radar-player" />
+      ${dots}
+      ${markers}
+      ${labels}
+    </svg>
+  `;
+}
+
+function ordinalSuffix(n) {
+  const s = ['th', 'st', 'nd', 'rd'];
+  const v = n % 100;
+  return n + (s[(v - 20) % 10] || s[v] || s[0]);
+}
+
+function getPlayerGameLog(player, teamId) {
+  return gamesData
+    .filter(g => g.home === teamId || g.away === teamId)
+    .sort((a, b) => a.week - b.week)
+    .map(g => {
+      const isHome = g.home === teamId;
+      const teamScore = isHome ? g.homeScore : g.awayScore;
+      const oppScore = isHome ? g.awayScore : g.homeScore;
+      const oppId = isHome ? g.away : g.home;
+      const opponent = getTeam(oppId);
+      const result = teamScore > oppScore ? 'W' : teamScore < oppScore ? 'L' : 'T';
+      const stats = (isHome ? g.homeStats : g.awayStats).find(p =>
+        p.name === player.name && p.number === player.number
+      );
+      return { week: g.week, date: g.date, opponent, teamScore, oppScore, result, stats, isHome };
+    });
+}
+
+function showPlayerInsights(teamId, number, name) {
+  const found = findPlayer(teamId, number, name);
+  if (!found) return;
+  const { player, team } = found;
+
+  // Ensure overlay exists
+  let overlay = document.getElementById('player-insights-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'player-insights-overlay';
+    overlay.className = 'player-insights-overlay';
+    overlay.innerHTML = '<div class="player-insights-modal" id="player-insights-modal"></div>';
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closePlayerInsights();
+    });
+    document.body.appendChild(overlay);
+  }
+
+  const modal = document.getElementById('player-insights-modal');
+  const skills = getPlayerSkillPercentiles(player);
+  const gameLog = getPlayerGameLog(player, team.id);
+
+  const compAtt = (player.passAtt || 0) > 0 ? `${player.passComp || 0}/${player.passAtt}` : '—';
+  const compPct = (player.passAtt || 0) > 0 ? `${((player.passComp / player.passAtt) * 100).toFixed(1)}%` : '—';
+  const totalTDs = (player.rushTDs || 0) + (player.recTDs || 0) + (player.defTDs || 0);
+
+  modal.innerHTML = `
+    <button class="close-detail" onclick="closePlayerInsights()">×</button>
+    <div class="player-insights-header">
+      <img class="player-insights-logo" src="${team.logo}" alt="${team.name}">
+      <div class="player-insights-title">
+        <h2>${player.name}</h2>
+        <div class="player-insights-meta">
+          <span class="player-insights-num">#${player.number}</span>
+          <span class="player-insights-pos">${player.position}</span>
+          <span class="player-insights-team" onclick="navigateToTeam('${team.id}')">${team.name}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="player-insights-section-title">Season Stats</div>
+    <div class="player-insights-summary-grid">
+      ${seasonStatBlock('Pass Yards', player.passYards)}
+      ${seasonStatBlock('Pass TDs', player.passTDs)}
+      ${seasonStatBlock('Comp %', compPct, compAtt)}
+      ${seasonStatBlock('Rush Yards', player.rushYards)}
+      ${seasonStatBlock('Rush TDs', player.rushTDs)}
+      ${seasonStatBlock('Receptions', player.receptions)}
+      ${seasonStatBlock('Rec Yards', player.recYards)}
+      ${seasonStatBlock('Rec TDs', player.recTDs)}
+      ${seasonStatBlock('Total TDs', totalTDs)}
+      ${seasonStatBlock('Def INTs', player.defInts)}
+      ${seasonStatBlock('Def TDs', player.defTDs)}
+      ${seasonStatBlock('Sacks', player.sacks)}
+      ${seasonStatBlock('Flag Pulls', player.flagPulls)}
+      ${seasonStatBlock('INTs Thrown', player.interceptions)}
+    </div>
+
+    <div class="player-insights-section-title">Player Skill Profile</div>
+    <div class="player-insights-radar-wrap">
+      ${renderRadarChart(skills)}
+      <p class="radar-caption">Percentile ranking across all players in the league</p>
+    </div>
+
+    <div class="player-insights-section-title">Game Log</div>
+    <div class="player-insights-gamelog">
+      ${renderGameLogTable(gameLog)}
+    </div>
+  `;
+
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function seasonStatBlock(label, value, sub) {
+  const display = (value === undefined || value === null || value === 0 || value === '0') && label !== 'Comp %'
+    ? '0' : (value === '—' ? '—' : value);
+  return `
+    <div class="player-stat-block">
+      <div class="player-stat-value">${display}</div>
+      <div class="player-stat-label">${label}</div>
+      ${sub ? `<div class="player-stat-sub">${sub}</div>` : ''}
+    </div>
+  `;
+}
+
+function renderGameLogTable(games) {
+  if (games.length === 0) {
+    return '<p style="color:var(--text-muted);">No games played yet this season.</p>';
+  }
+  const played = games.filter(g => g.teamScore !== null);
+  if (played.length === 0) {
+    return '<p style="color:var(--text-muted);">No games played yet this season.</p>';
+  }
+  return `
+    <div style="overflow-x:auto">
+      <table class="gamelog-table">
+        <thead>
+          <tr>
+            <th>Wk</th>
+            <th>Opponent</th>
+            <th>Result</th>
+            <th>C/Att</th>
+            <th>Pass Yds</th>
+            <th>Pass TD</th>
+            <th>Rush Yds</th>
+            <th>Rush TD</th>
+            <th>Rec</th>
+            <th>Rec Yds</th>
+            <th>Rec TD</th>
+            <th>Def INT</th>
+            <th>Def TD</th>
+            <th>Sacks</th>
+            <th>Flags</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${played.map(g => {
+            const s = g.stats || {};
+            const compAtt = (s.passAtt || 0) > 0 ? `${s.passComp || 0}/${s.passAtt}` : '—';
+            const resultClass = g.result === 'W' ? 'result-win-cell' : g.result === 'L' ? 'result-loss-cell' : '';
+            return `
+              <tr>
+                <td>${g.week}</td>
+                <td class="gamelog-opp">
+                  <div class="gamelog-opp-inner">
+                    <img class="team-logo" src="${g.opponent.logo}" alt="" style="width:18px;height:18px;">
+                    <span>${g.opponent.name}</span>
+                  </div>
+                </td>
+                <td class="${resultClass}">${g.result} ${g.teamScore}-${g.oppScore}</td>
+                <td>${compAtt}</td>
+                <td>${s.passYards || '—'}</td>
+                <td>${s.passTDs || '—'}</td>
+                <td>${s.rushYards || '—'}</td>
+                <td>${s.rushTDs || '—'}</td>
+                <td>${s.receptions || '—'}</td>
+                <td>${s.recYards || '—'}</td>
+                <td>${s.recTDs || '—'}</td>
+                <td>${s.defInts || '—'}</td>
+                <td>${s.defTDs || '—'}</td>
+                <td>${s.sacks || '—'}</td>
+                <td>${s.flagPulls || '—'}</td>
+              </tr>
+            `;
+          }).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function closePlayerInsights() {
+  const overlay = document.getElementById('player-insights-overlay');
+  if (overlay) {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
 /* ── Keyboard shortcut for closing modals ── */
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeGameDetail();
+    closePlayerInsights();
   }
 });
 
@@ -610,6 +942,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderStandings('standings');
 
   // Schedule page
+  populateTeamFilter();
   renderSchedule('schedule');
 
   // Teams page
