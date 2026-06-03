@@ -1250,6 +1250,27 @@
         "rushTDs": 0,
         "recTDs": 0,
         "defTDs": 0
+      },
+      {
+        "number": 59,
+        "name": "Moe Ashkar",
+        "position": "OL",
+        "passComp": 0,
+        "passAtt": 0,
+        "passYards": 0,
+        "passTDs": 0,
+        "interceptions": 0,
+        "rushAtt": 0,
+        "rushYards": 0,
+        "rushTDs": 0,
+        "receptions": 0,
+        "recYards": 0,
+        "recTDs": 0,
+        "defInts": 0,
+        "defTDs": 0,
+        "pbu": 0,
+        "sacks": 0,
+        "flagPulls": 0
       }
     ]
   },
