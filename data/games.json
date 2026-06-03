@@ -2083,7 +2083,7 @@
         "receptions": 1,
         "recYards": 13,
         "recTDs": 0,
-        "defInts": 0,
+        "defInts": 1,
         "defTDs": 0,
         "pbu": 0,
         "sacks": 0,
@@ -11724,7 +11724,7 @@
         "defInts": 0,
         "defTDs": 0,
         "pbu": 0,
-        "sacks": 0,
+        "sacks": 1,
         "flagPulls": 0
       },
       {
