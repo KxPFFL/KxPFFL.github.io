@@ -28,7 +28,11 @@
 
   <section class="section" style="padding-top: 2.5rem;">
     <h2 class="section-title">Stat Leaders</h2>
-    <p style="color:var(--text-muted); margin-bottom:1.5rem;">Top players across every stat category, ranked automatically from team rosters.</p>
+    <p style="color:var(--text-muted); margin-bottom:1rem;">Top performers across every stat category, ranked automatically.</p>
+    <div class="leaders-mode-toggle">
+      <button class="leader-mode-btn active" data-mode="player" onclick="setLeaderMode('player')">Players</button>
+      <button class="leader-mode-btn" data-mode="team" onclick="setLeaderMode('team')">Teams</button>
+    </div>
     <div id="leaders" class="leaders-grid"></div>
   </section>
 

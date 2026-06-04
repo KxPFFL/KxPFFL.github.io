@@ -1459,6 +1459,152 @@ img { max-width: 100%; display: block; }
   .gamelog-table th, .gamelog-table td { padding: 0.4rem 0.3rem; }
 }
 
+/* ── Team Leaders (NFL style) ── */
+.team-leaders-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.team-leaders-section-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.5rem;
+  margin: 0 0 1rem;
+}
+
+.team-leaders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+}
+
+.team-leader-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.team-leader-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 1rem;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.team-leader-stat-name {
+  font-weight: 700;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.team-leader-stat-unit {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.team-leader-row {
+  display: grid;
+  grid-template-columns: 28px 32px 1fr auto;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.team-leader-row:hover {
+  background: var(--accent-glow);
+}
+
+.team-leader-row:last-of-type { border-bottom: none; }
+
+.team-leader-rank {
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.team-leader-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.team-leader-name {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.team-leader-value {
+  font-weight: 700;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.team-leader-complete {
+  display: block;
+  text-align: center;
+  padding: 0.65rem;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  cursor: default;
+  opacity: 0.6;
+}
+
+/* ── Leaders mode toggle ── */
+.leaders-mode-toggle {
+  display: inline-flex;
+  margin-bottom: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.leader-mode-btn {
+  background: transparent;
+  color: var(--text-muted);
+  border: none;
+  padding: 0.5rem 1.1rem;
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.leader-mode-btn:hover {
+  color: var(--text);
+}
+
+.leader-mode-btn.active {
+  background: var(--accent);
+  color: #0d1117;
+}
+
 /* ── Schedule Filter ── */
 .schedule-filter-bar {
   display: flex;

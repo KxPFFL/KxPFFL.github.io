@@ -534,10 +534,48 @@ function toggleMobileNav() {
 }
 
 /* ── Stat Leaders ── */
+let leaderMode = 'player';
+
+function setLeaderMode(mode) {
+  leaderMode = mode;
+  document.querySelectorAll('.leader-mode-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.mode === mode);
+  });
+  renderLeaders('leaders');
+}
+
 function renderLeaders(containerId) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
+  // Flatten all players with team info
+  const allPlayers = [];
+  teamsData.forEach(team => {
+    team.roster.forEach(player => {
+      allPlayers.push({ ...player, teamId: team.id, teamName: team.name, teamLogo: team.logo });
+    });
+  });
+
+  // Check if any stats yet
+  const hasAnyStats = allPlayers.some(p =>
+    p.passYards > 0 || p.passTDs > 0 || p.passComp > 0 || p.rushYards > 0 || p.rushTDs > 0 ||
+    p.receptions > 0 || p.recYards > 0 || p.recTDs > 0 ||
+    p.defInts > 0 || p.defTDs > 0 || p.pbu > 0 || p.sacks > 0 || p.flagPulls > 0
+  );
+
+  if (!hasAnyStats) {
+    container.innerHTML = '<div class="no-stats-message"><p>Stat leaders will appear here once the season kicks off.</p><p style="font-size:0.85rem; margin-top:0.5rem;">Check back after Week 1!</p></div>';
+    return;
+  }
+
+  if (leaderMode === 'team') {
+    container.innerHTML = renderTeamLeaders();
+  } else {
+    container.innerHTML = renderPlayerLeaders(allPlayers);
+  }
+}
+
+function renderPlayerLeaders(allPlayers) {
   const categories = [
     { key: 'passYards', label: 'Passing Yards', icon: 'QBs' },
     { key: 'passTDs', label: 'Passing TDs', icon: 'QBs' },
@@ -560,26 +598,6 @@ function renderLeaders(containerId) {
     { key: 'sacks', label: 'Sacks', icon: 'DL' },
     { key: 'flagPulls', label: 'Flag Pulls', icon: 'DEF' }
   ];
-
-  // Flatten all players with team info
-  const allPlayers = [];
-  teamsData.forEach(team => {
-    team.roster.forEach(player => {
-      allPlayers.push({ ...player, teamId: team.id, teamName: team.name, teamLogo: team.logo });
-    });
-  });
-
-  // Check if any players have stats yet
-  const hasAnyStats = allPlayers.some(p =>
-    p.passYards > 0 || p.passTDs > 0 || p.passComp > 0 || p.rushYards > 0 || p.rushTDs > 0 ||
-    p.receptions > 0 || p.recYards > 0 || p.recTDs > 0 ||
-    p.defInts > 0 || p.defTDs > 0 || p.pbu > 0 || p.sacks > 0 || p.flagPulls > 0
-  );
-
-  if (!hasAnyStats) {
-    container.innerHTML = '<div class="no-stats-message"><p>Stat leaders will appear here once the season kicks off.</p><p style="font-size:0.85rem; margin-top:0.5rem;">Check back after Week 1!</p></div>';
-    return;
-  }
 
   let html = '';
   categories.forEach(cat => {
@@ -620,11 +638,150 @@ function renderLeaders(containerId) {
         </div>
       `;
     });
-
     html += '</div>';
   });
+  return html;
+}
 
-  container.innerHTML = html;
+function renderTeamLeaders() {
+  // Compute team-level aggregates from games.json (per-game stats)
+  const teamStats = {};
+  teamsData.forEach(t => {
+    teamStats[t.id] = {
+      teamId: t.id, teamName: t.name, teamLogo: t.logo,
+      gamesPlayed: 0,
+      passYards: 0, rushYards: 0, sacks: 0,
+      defInts: 0, interceptions: 0,
+      yardsAllowed: 0
+    };
+  });
+
+  gamesData.forEach(g => {
+    const homeAgg = teamStats[g.home];
+    const awayAgg = teamStats[g.away];
+    if (!homeAgg || !awayAgg) return;
+
+    const sumStats = (statsArr) => {
+      let pY = 0, rY = 0, s = 0, dI = 0, iT = 0;
+      statsArr.forEach(p => {
+        pY += p.passYards || 0;
+        rY += p.rushYards || 0;
+        s += p.sacks || 0;
+        dI += p.defInts || 0;
+        iT += p.interceptions || 0;
+      });
+      return { passYards: pY, rushYards: rY, sacks: s, defInts: dI, interceptions: iT };
+    };
+
+    const homeT = sumStats(g.homeStats);
+    const awayT = sumStats(g.awayStats);
+
+    homeAgg.gamesPlayed++;
+    homeAgg.passYards += homeT.passYards;
+    homeAgg.rushYards += homeT.rushYards;
+    homeAgg.sacks += homeT.sacks;
+    homeAgg.defInts += homeT.defInts;
+    homeAgg.interceptions += homeT.interceptions;
+    homeAgg.yardsAllowed += awayT.passYards + awayT.rushYards;
+
+    awayAgg.gamesPlayed++;
+    awayAgg.passYards += awayT.passYards;
+    awayAgg.rushYards += awayT.rushYards;
+    awayAgg.sacks += awayT.sacks;
+    awayAgg.defInts += awayT.defInts;
+    awayAgg.interceptions += awayT.interceptions;
+    awayAgg.yardsAllowed += homeT.passYards + homeT.rushYards;
+  });
+
+  const teams = Object.values(teamStats).filter(t => t.gamesPlayed > 0);
+
+  const sections = [
+    {
+      title: 'Offensive Leaders',
+      categories: [
+        {
+          label: 'Total Yards', unit: 'YDS/G',
+          compute: t => (t.passYards + t.rushYards) / t.gamesPlayed,
+          format: v => v.toFixed(1),
+          desc: true
+        },
+        {
+          label: 'Passing', unit: 'YDS/G',
+          compute: t => t.passYards / t.gamesPlayed,
+          format: v => v.toFixed(1),
+          desc: true
+        },
+        {
+          label: 'Rushing', unit: 'YDS/G',
+          compute: t => t.rushYards / t.gamesPlayed,
+          format: v => v.toFixed(1),
+          desc: true
+        }
+      ]
+    },
+    {
+      title: 'Defensive Leaders',
+      categories: [
+        {
+          label: 'Yards Allowed', unit: 'YDS/G',
+          compute: t => t.yardsAllowed / t.gamesPlayed,
+          format: v => v.toFixed(1),
+          desc: false  // lower is better
+        },
+        {
+          label: 'Sacks', unit: 'SACK',
+          compute: t => t.sacks,
+          format: v => v.toFixed(0),
+          desc: true
+        },
+        {
+          label: 'Turnovers', unit: 'DIFF',
+          compute: t => t.defInts - t.interceptions,
+          format: v => (v > 0 ? '+' : '') + v.toFixed(0),
+          desc: true
+        }
+      ]
+    }
+  ];
+
+  let html = '<div class="team-leaders-wrap">';
+  sections.forEach(section => {
+    html += `<h3 class="team-leaders-section-title">${section.title}</h3>`;
+    html += '<div class="team-leaders-grid">';
+    section.categories.forEach(cat => {
+      const sorted = [...teams].sort((a, b) => {
+        const va = cat.compute(a), vb = cat.compute(b);
+        return cat.desc ? vb - va : va - vb;
+      }).slice(0, 5);
+
+      html += `
+        <div class="team-leader-card">
+          <div class="team-leader-card-header">
+            <span class="team-leader-stat-name">${cat.label}</span>
+            <span class="team-leader-stat-unit">${cat.unit}</span>
+          </div>
+      `;
+
+      sorted.forEach((t, i) => {
+        const v = cat.compute(t);
+        const displayValue = cat.format(v);
+        html += `
+          <div class="team-leader-row" onclick="navigateToTeam('${t.teamId}')">
+            <span class="team-leader-rank">${i + 1}</span>
+            <img class="team-leader-logo" src="${t.teamLogo}" alt="${t.teamName}">
+            <span class="team-leader-name">${t.teamName}</span>
+            <span class="team-leader-value">${displayValue}</span>
+          </div>
+        `;
+      });
+
+      html += `<a class="team-leader-complete" onclick="event.stopPropagation();">Complete Leaders</a>`;
+      html += '</div>';
+    });
+    html += '</div>';
+  });
+  html += '</div>';
+  return html;
 }
 
 /* ── Player Insights ── */
