@@ -180,8 +180,8 @@
         "location": "Field A"
       },
       {
-        "home": "pali-gliders",
-        "away": "gmob",
+        "home": "warriors",
+        "away": "good-guys",
         "homeScore": null,
         "awayScore": null,
         "time": "10:30 AM",
@@ -212,8 +212,8 @@
         "location": "Field A"
       },
       {
-        "home": "warriors",
-        "away": "good-guys",
+        "home": "pali-gliders",
+        "away": "gmob",
         "homeScore": null,
         "awayScore": null,
         "time": "2:30 PM",
