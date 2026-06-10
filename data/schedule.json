@@ -190,12 +190,13 @@
       {
         "home": "lob",
         "away": "falestine-falcons",
-        "homeScore": null,
-        "awayScore": null,
+        "homeScore": 0,
+        "awayScore": 0,
         "time": "11:30 AM",
         "location": "Field A",
-        "noContest": true,
-        "noContestReason": "Game called — both teams credited with a loss"
+        "forfeit": true,
+        "forfeitWinner": "away",
+        "forfeitReason": "Falcons awarded the win — no stats recorded"
       },
       {
         "home": "desert-lions",

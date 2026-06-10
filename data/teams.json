@@ -1320,11 +1320,11 @@
     "id": "falestine-falcons",
     "name": "Falestine Falcons",
     "logo": "images/Falastinee Falcons .jpeg",
-    "wins": 1,
-    "losses": 3,
+    "wins": 2,
+    "losses": 2,
     "ties": 0,
     "pointsFor": 30,
-    "pointsAgainst": 63,
+    "pointsAgainst": 57,
     "roster": [
       {
         "number": 1,
@@ -2494,7 +2494,7 @@
     "losses": 2,
     "ties": 0,
     "pointsFor": 38,
-    "pointsAgainst": 32,
+    "pointsAgainst": 26,
     "roster": [
       {
         "number": 17,

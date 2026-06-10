@@ -148,8 +148,16 @@ function renderSchedule(containerId) {
       const played = game.homeScore !== null;
       const noContest = !!game.noContest;
       const forfeit = !!game.forfeit;
-      const homeWon = played && game.homeScore > game.awayScore;
-      const awayWon = played && game.awayScore > game.homeScore;
+      let homeWon = played && game.homeScore > game.awayScore;
+      let awayWon = played && game.awayScore > game.homeScore;
+      if (forfeit && game.forfeitWinner) {
+        homeWon = game.forfeitWinner === 'home';
+        awayWon = game.forfeitWinner === 'away';
+      } else if (forfeit && !game.forfeitWinner) {
+        // Legacy forfeit games (default: home team won)
+        homeWon = true;
+        awayWon = false;
+      }
       const homeBadge = homeWon ? '<span class="result-badge result-win">W</span>'
                        : awayWon ? '<span class="result-badge result-loss">L</span>' : '';
       const awayBadge = awayWon ? '<span class="result-badge result-win">W</span>'
@@ -159,7 +167,11 @@ function renderSchedule(containerId) {
       if (noContest) {
         scoreHtml = `<span class="no-contest-badge">No Contest</span>`;
       } else if (forfeit) {
-        scoreHtml = `<div class="score">${game.homeScore} - ${game.awayScore}</div><span class="forfeit-badge">Forfeit</span>`;
+        // Only show score if it's meaningful (e.g., 6-0 from earlier forfeits)
+        const hasScore = (game.homeScore || 0) + (game.awayScore || 0) > 0;
+        scoreHtml = hasScore
+          ? `<div class="score">${game.homeScore} - ${game.awayScore}</div><span class="forfeit-badge">Forfeit</span>`
+          : `<span class="forfeit-badge">Forfeit</span>`;
       } else if (played) {
         scoreHtml = `<div class="score">${game.homeScore} - ${game.awayScore}</div>`;
       } else {
