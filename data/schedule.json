@@ -227,9 +227,56 @@
   {
     "week": 5,
     "date": "2026-06-14",
-    "games": [],
-    "tbd": true,
-    "note": "Cross-Conference Play — Matchups TBD"
+    "games": [
+      {
+        "home": "good-guys",
+        "away": "warbred",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "9:30 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "lob",
+        "away": "warriors",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "10:30 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "desert-lions",
+        "away": "gmob",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "11:30 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "falestine-falcons",
+        "away": "pali-gliders",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "12:30 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "all-madden",
+        "away": "darkside",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "1:30 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "pak-lions",
+        "away": "k2",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "2:30 PM",
+        "location": "Field A"
+      }
+    ]
   },
   {
     "week": 6,
