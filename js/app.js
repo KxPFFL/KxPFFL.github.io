@@ -511,6 +511,9 @@ function showTeamDetail(teamId) {
     if (!hasStats) {
       html += '<p style="color:var(--text-muted); margin-top:1rem; font-size:0.9rem;">Stats will appear once the season begins.</p>';
     }
+
+    // Team game log
+    html += renderTeamGameLog(team);
   } else {
     html += '<p style="color:var(--text-muted); padding:1rem 0;">Roster coming soon.</p>';
   }
@@ -914,6 +917,141 @@ function ordinalSuffix(n) {
   const s = ['th', 'st', 'nd', 'rd'];
   const v = n % 100;
   return n + (s[(v - 20) % 10] || s[v] || s[0]);
+}
+
+function renderTeamGameLog(team) {
+  // Get games involving this team
+  const log = [];
+  // Played games from games.json
+  gamesData.forEach(g => {
+    if (g.home !== team.id && g.away !== team.id) return;
+    const isHome = g.home === team.id;
+    const teamScore = isHome ? g.homeScore : g.awayScore;
+    const oppScore = isHome ? g.awayScore : g.homeScore;
+    const oppId = isHome ? g.away : g.home;
+    const opponent = getTeam(oppId);
+    if (!opponent || teamScore === null) return;
+    const result = teamScore > oppScore ? 'W' : teamScore < oppScore ? 'L' : 'T';
+    const teamStats = isHome ? g.homeStats : g.awayStats;
+    const totals = calcTeamTotals(teamStats);
+    const totalTDs = (totals.rushTDs || 0) + (totals.recTDs || 0) + (totals.defTDs || 0);
+    log.push({
+      week: g.week, opponent, teamScore, oppScore, result,
+      totals, totalTDs
+    });
+  });
+  // Forfeits / no contests from schedule
+  scheduleData.forEach(wk => {
+    (wk.games || []).forEach(g => {
+      if (g.home !== team.id && g.away !== team.id) return;
+      const isHome = g.home === team.id;
+      const oppId = isHome ? g.away : g.home;
+      const opponent = getTeam(oppId);
+      if (!opponent) return;
+      if (g.forfeit) {
+        // Check if we already have this game from games.json
+        if (log.some(l => l.week === wk.week && l.opponent.id === opponent.id)) return;
+        const winnerSide = g.forfeitWinner || 'home';
+        const result = ((isHome && winnerSide === 'home') || (!isHome && winnerSide === 'away')) ? 'W' : 'L';
+        log.push({
+          week: wk.week, opponent,
+          teamScore: isHome ? (g.homeScore || 0) : (g.awayScore || 0),
+          oppScore: isHome ? (g.awayScore || 0) : (g.homeScore || 0),
+          result, isForfeit: true
+        });
+      } else if (g.noContest) {
+        log.push({
+          week: wk.week, opponent,
+          teamScore: '—', oppScore: '—',
+          result: 'L', isNoContest: true
+        });
+      }
+    });
+  });
+  log.sort((a, b) => a.week - b.week);
+
+  if (log.length === 0) {
+    return '<h3 class="team-gamelog-title">Game Log</h3><p style="color:var(--text-muted);">No games played yet.</p>';
+  }
+
+  let html = '<h3 class="team-gamelog-title">Game Log</h3>';
+  html += '<div style="overflow-x:auto"><table class="gamelog-table">';
+  html += `
+    <thead>
+      <tr>
+        <th>Wk</th>
+        <th>Opponent</th>
+        <th>Result</th>
+        <th>Pass Yds</th>
+        <th>Pass TD</th>
+        <th>Rush Yds</th>
+        <th>Rush TD</th>
+        <th>Rec TD</th>
+        <th>Total TD</th>
+        <th>INT Thrown</th>
+        <th>Def INT</th>
+        <th>Def TD</th>
+        <th>PBU</th>
+        <th>Sacks</th>
+        <th>Flag Pulls</th>
+      </tr>
+    </thead>
+    <tbody>
+  `;
+  log.forEach(entry => {
+    const resultClass = entry.result === 'W' ? 'result-win-cell' : entry.result === 'L' ? 'result-loss-cell' : '';
+    if (entry.isNoContest) {
+      html += `
+        <tr>
+          <td>${entry.week}</td>
+          <td class="gamelog-opp"><div class="gamelog-opp-inner">
+            <img class="team-logo" src="${entry.opponent.logo}" alt="" style="width:18px;height:18px;">
+            <span>${entry.opponent.name}</span>
+          </div></td>
+          <td class="${resultClass}">No Contest</td>
+          <td colspan="12" style="color:var(--text-muted); font-style:italic;">No stats recorded</td>
+        </tr>
+      `;
+    } else if (entry.isForfeit) {
+      html += `
+        <tr>
+          <td>${entry.week}</td>
+          <td class="gamelog-opp"><div class="gamelog-opp-inner">
+            <img class="team-logo" src="${entry.opponent.logo}" alt="" style="width:18px;height:18px;">
+            <span>${entry.opponent.name}</span>
+          </div></td>
+          <td class="${resultClass}">${entry.result} (Forfeit)</td>
+          <td colspan="12" style="color:var(--text-muted); font-style:italic;">No stats recorded</td>
+        </tr>
+      `;
+    } else {
+      const t = entry.totals;
+      html += `
+        <tr>
+          <td>${entry.week}</td>
+          <td class="gamelog-opp"><div class="gamelog-opp-inner">
+            <img class="team-logo" src="${entry.opponent.logo}" alt="" style="width:18px;height:18px;">
+            <span>${entry.opponent.name}</span>
+          </div></td>
+          <td class="${resultClass}">${entry.result} ${entry.teamScore}-${entry.oppScore}</td>
+          <td>${t.passYards || '—'}</td>
+          <td>${t.passTDs || '—'}</td>
+          <td>${t.rushYards || '—'}</td>
+          <td>${t.rushTDs || '—'}</td>
+          <td>${t.recTDs || '—'}</td>
+          <td>${entry.totalTDs || '—'}</td>
+          <td>${t.interceptions || '—'}</td>
+          <td>${t.defInts || '—'}</td>
+          <td>${t.defTDs || '—'}</td>
+          <td>${t.pbu || '—'}</td>
+          <td>${t.sacks || '—'}</td>
+          <td>${t.flagPulls || '—'}</td>
+        </tr>
+      `;
+    }
+  });
+  html += '</tbody></table></div>';
+  return html;
 }
 
 function getPlayerGameLog(player, teamId) {

@@ -1890,3 +1890,12 @@ img { max-width: 100%; display: block; }
 
 .result-win-cell { color: var(--green, #4ade80); font-weight: 600; }
 .result-loss-cell { color: var(--red, #ff5252); font-weight: 600; }
+
+.team-gamelog-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 2rem 0 1rem;
+  padding-left: 0.6rem;
+  border-left: 3px solid var(--accent);
+}
