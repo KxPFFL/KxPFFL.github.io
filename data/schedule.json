@@ -210,7 +210,7 @@
         "home": "pak-lions",
         "away": "all-madden",
         "homeScore": 0,
-        "awayScore": 28,
+        "awayScore": 29,
         "time": "1:30 PM",
         "location": "Field A"
       },
@@ -335,9 +335,56 @@
   {
     "week": 7,
     "date": "2026-07-12",
-    "games": [],
-    "tbd": true,
-    "note": "Cross-Conference Play — Matchups TBD"
+    "games": [
+      {
+        "home": "warbred",
+        "away": "pali-gliders",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "9:30 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "gmob",
+        "away": "darkside",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "10:30 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "lob",
+        "away": "falestine-falcons",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "11:30 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "lob",
+        "away": "all-madden",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "12:30 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "pak-lions",
+        "away": "desert-lions",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "1:30 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "warriors",
+        "away": "k2",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "2:30 PM",
+        "location": "Field A"
+      }
+    ]
   },
   {
     "week": 8,

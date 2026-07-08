@@ -180,9 +180,13 @@ function renderSchedule(containerId) {
 
       // Forfeit games don't have box scores (no stats recorded)
       const showBoxScore = played && !forfeit;
-      const cardClickAttr = showBoxScore
-        ? `onclick="showGameDetail(${week.week}, '${game.home}', '${game.away}')" style="cursor:pointer;"`
-        : '';
+      const isUpcoming = !played && !noContest && !forfeit;
+      let cardClickAttr = '';
+      if (showBoxScore) {
+        cardClickAttr = `onclick="showGameDetail(${week.week}, '${game.home}', '${game.away}')" style="cursor:pointer;"`;
+      } else if (isUpcoming) {
+        cardClickAttr = `onclick="showMatchInsights(${week.week}, '${game.home}', '${game.away}')" style="cursor:pointer;"`;
+      }
 
       html += `
         <div class="game-card ${played ? 'game-played' : ''} ${noContest ? 'game-no-contest' : ''} ${forfeit ? 'game-forfeit' : ''}" ${cardClickAttr}>
@@ -203,6 +207,7 @@ function renderSchedule(containerId) {
             ${teamLogo(away, 32)}
           </div>
           ${showBoxScore ? '<div class="game-expand-hint">View Box Score</div>' : ''}
+          ${isUpcoming ? '<div class="game-expand-hint hint-preview">Match Preview &rarr;</div>' : ''}
         </div>
       `;
     });
@@ -658,6 +663,8 @@ function renderPlayerLeaders(allPlayers) {
   return html;
 }
 
+let teamLeadersCache = { teams: [], sections: [] };
+
 function renderTeamLeaders() {
   // Compute team-level aggregates from games.json (per-game stats)
   const teamStats = {};
@@ -759,11 +766,14 @@ function renderTeamLeaders() {
     }
   ];
 
+  // Cache for the Complete Leaders modal
+  teamLeadersCache = { teams, sections };
+
   let html = '<div class="team-leaders-wrap">';
-  sections.forEach(section => {
+  sections.forEach((section, sIdx) => {
     html += `<h3 class="team-leaders-section-title">${section.title}</h3>`;
     html += '<div class="team-leaders-grid">';
-    section.categories.forEach(cat => {
+    section.categories.forEach((cat, cIdx) => {
       const sorted = [...teams].sort((a, b) => {
         const va = cat.compute(a), vb = cat.compute(b);
         return cat.desc ? vb - va : va - vb;
@@ -790,13 +800,70 @@ function renderTeamLeaders() {
         `;
       });
 
-      html += `<a class="team-leader-complete" onclick="event.stopPropagation();">Complete Leaders</a>`;
+      html += `<a class="team-leader-complete" onclick="event.stopPropagation(); showTeamLeadersFullList(${sIdx}, ${cIdx})">Complete Leaders</a>`;
       html += '</div>';
     });
     html += '</div>';
   });
   html += '</div>';
   return html;
+}
+
+function showTeamLeadersFullList(sectionIdx, catIdx) {
+  const section = teamLeadersCache.sections[sectionIdx];
+  const cat = section.categories[catIdx];
+  const teams = teamLeadersCache.teams;
+  const sorted = [...teams].sort((a, b) => {
+    const va = cat.compute(a), vb = cat.compute(b);
+    return cat.desc ? vb - va : va - vb;
+  });
+
+  // Ensure overlay exists
+  let overlay = document.getElementById('team-leaders-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'team-leaders-overlay';
+    overlay.className = 'team-leaders-overlay';
+    overlay.innerHTML = '<div class="team-leaders-modal" id="team-leaders-modal"></div>';
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeTeamLeadersFullList();
+    });
+    document.body.appendChild(overlay);
+  }
+
+  const modal = document.getElementById('team-leaders-modal');
+  let html = `
+    <button class="close-detail" onclick="closeTeamLeadersFullList()">&times;</button>
+    <div class="team-leaders-modal-header">
+      <div class="team-leaders-modal-title">${cat.label}</div>
+      <div class="team-leaders-modal-sub">${section.title} &middot; ${cat.unit}</div>
+    </div>
+    <div class="team-leaders-modal-list">
+  `;
+  sorted.forEach((t, i) => {
+    const v = cat.compute(t);
+    const displayValue = cat.format(v);
+    html += `
+      <div class="team-leader-row" onclick="closeTeamLeadersFullList(); navigateToTeam('${t.teamId}')">
+        <span class="team-leader-rank">${i + 1}</span>
+        <img class="team-leader-logo" src="${t.teamLogo}" alt="${t.teamName}">
+        <span class="team-leader-name">${t.teamName}</span>
+        <span class="team-leader-value">${displayValue}</span>
+      </div>
+    `;
+  });
+  html += '</div>';
+  modal.innerHTML = html;
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeTeamLeadersFullList() {
+  const overlay = document.getElementById('team-leaders-overlay');
+  if (overlay) {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
 }
 
 /* ── Player Insights ── */
@@ -1232,11 +1299,352 @@ function closePlayerInsights() {
   }
 }
 
+/* ── Match Insights (for upcoming games) ── */
+function computeTeamAggregates(teamId) {
+  const teamGames = gamesData.filter(g => g.home === teamId || g.away === teamId);
+  const agg = {
+    gamesPlayed: 0,
+    passYards: 0, rushYards: 0, sacks: 0,
+    defInts: 0, interceptions: 0,
+    passTDs: 0, rushTDs: 0, recTDs: 0, defTDs: 0,
+    yardsAllowed: 0, ptsFor: 0, ptsAgainst: 0,
+    formHistory: []  // array of 'W'/'L'/'T' for last games (oldest first)
+  };
+  teamGames.sort((a, b) => a.week - b.week);
+  teamGames.forEach(g => {
+    const isHome = g.home === teamId;
+    const teamStats = isHome ? g.homeStats : g.awayStats;
+    const oppStats = isHome ? g.awayStats : g.homeStats;
+    const ts = teamStats.reduce((s, p) => ({
+      passYards: s.passYards + (p.passYards || 0),
+      rushYards: s.rushYards + (p.rushYards || 0),
+      sacks: s.sacks + (p.sacks || 0),
+      defInts: s.defInts + (p.defInts || 0),
+      interceptions: s.interceptions + (p.interceptions || 0),
+      passTDs: s.passTDs + (p.passTDs || 0),
+      rushTDs: s.rushTDs + (p.rushTDs || 0),
+      recTDs: s.recTDs + (p.recTDs || 0),
+      defTDs: s.defTDs + (p.defTDs || 0),
+    }), { passYards:0, rushYards:0, sacks:0, defInts:0, interceptions:0, passTDs:0, rushTDs:0, recTDs:0, defTDs:0 });
+    const oppYards = oppStats.reduce((s, p) => s + (p.passYards || 0) + (p.rushYards || 0), 0);
+    agg.gamesPlayed++;
+    Object.keys(ts).forEach(k => agg[k] += ts[k]);
+    agg.yardsAllowed += oppYards;
+    const myScore = isHome ? g.homeScore : g.awayScore;
+    const oppScore = isHome ? g.awayScore : g.homeScore;
+    agg.ptsFor += myScore || 0;
+    agg.ptsAgainst += oppScore || 0;
+    agg.formHistory.push(myScore > oppScore ? 'W' : myScore < oppScore ? 'L' : 'T');
+  });
+  return agg;
+}
+
+function findTopPlayers(teamId) {
+  const team = getTeam(teamId);
+  if (!team) return {};
+  const roster = team.roster;
+  // Only players with actual production
+  const withStats = roster.filter(p =>
+    (p.passYards || 0) + (p.rushYards || 0) + (p.recYards || 0) +
+    (p.defInts || 0) + (p.pbu || 0) + (p.sacks || 0) + (p.flagPulls || 0) > 0
+  );
+  const top = (key) => [...withStats].sort((a, b) => (b[key] || 0) - (a[key] || 0))[0];
+  return {
+    topPasser: top('passYards'),
+    topRusher: top('rushYards'),
+    topReceiver: top('recYards'),
+    topSacker: top('sacks'),
+    topPuller: top('flagPulls'),
+    topDB: [...withStats].sort((a, b) => ((b.defInts||0)+(b.pbu||0)+(b.defTDs||0)) - ((a.defInts||0)+(a.pbu||0)+(a.defTDs||0)))[0]
+  };
+}
+
+function findHeadToHead(teamAId, teamBId) {
+  const played = gamesData.filter(g =>
+    (g.home === teamAId && g.away === teamBId) ||
+    (g.home === teamBId && g.away === teamAId)
+  );
+  return played.map(g => {
+    const aScore = g.home === teamAId ? g.homeScore : g.awayScore;
+    const bScore = g.home === teamAId ? g.awayScore : g.homeScore;
+    return { week: g.week, aScore, bScore, winner: aScore > bScore ? 'a' : aScore < bScore ? 'b' : 't' };
+  });
+}
+
+function generateStoryline(home, away, homeAgg, awayAgg, h2h) {
+  const stories = [];
+  const homeUndef = home.wins > 0 && home.losses === 0;
+  const awayUndef = away.wins > 0 && away.losses === 0;
+  const homeStreak = getStreak(homeAgg.formHistory);
+  const awayStreak = getStreak(awayAgg.formHistory);
+  const homeDiff = (home.pointsFor || 0) - (home.pointsAgainst || 0);
+  const awayDiff = (away.pointsFor || 0) - (away.pointsAgainst || 0);
+
+  if (homeUndef && awayUndef) {
+    stories.push({
+      headline: '⚔️ Battle of Unbeatens',
+      body: `Two perfect records collide. Only one leaves standing.`
+    });
+  }
+  if (h2h.length > 0) {
+    const last = h2h[h2h.length - 1];
+    const homeWonH2H = (last.winner === 'a');
+    stories.push({
+      headline: '🔁 Rematch',
+      body: homeWonH2H
+        ? `${home.name} took the previous meeting ${last.aScore}-${last.bScore}. Can ${away.name} return the favor?`
+        : `${away.name} won the last meeting ${last.bScore}-${last.aScore}. ${home.name} looks to even the score.`
+    });
+  }
+  if (homeStreak.count >= 2 && homeStreak.type === 'W') {
+    stories.push({
+      headline: '🔥 Streak On The Line',
+      body: `${home.name} has won ${homeStreak.count} straight and is riding a hot wave into this one.`
+    });
+  }
+  if (awayStreak.count >= 2 && awayStreak.type === 'W') {
+    stories.push({
+      headline: '🔥 Streak On The Line',
+      body: `${away.name} rolls in with ${awayStreak.count} consecutive wins. Their momentum is undeniable.`
+    });
+  }
+  if (Math.abs(home.wins - away.wins) >= 3) {
+    const under = home.wins < away.wins ? home : away;
+    const over = home.wins < away.wins ? away : home;
+    stories.push({
+      headline: '🎯 Underdog Story',
+      body: `${under.name} enters as the underdog against a red-hot ${over.name}. Upset alert?`
+    });
+  }
+  const bigOffense = (homeAgg.gamesPlayed && (homeAgg.passYards + homeAgg.rushYards)/homeAgg.gamesPlayed >= 200)
+                    || (awayAgg.gamesPlayed && (awayAgg.passYards + awayAgg.rushYards)/awayAgg.gamesPlayed >= 200);
+  const strongDef = homeAgg.gamesPlayed && (homeAgg.yardsAllowed / homeAgg.gamesPlayed) <= 100
+                    || awayAgg.gamesPlayed && (awayAgg.yardsAllowed / awayAgg.gamesPlayed) <= 100;
+  if (bigOffense && strongDef) {
+    stories.push({
+      headline: '💥 Strength vs Strength',
+      body: `Explosive offense meets a lockdown defense. Something has to give.`
+    });
+  }
+
+  if (stories.length === 0) {
+    stories.push({
+      headline: '⚡ Every Game Matters',
+      body: `Both squads still have plenty to fight for. Expect intensity from the jump.`
+    });
+  }
+  return stories.slice(0, 2);
+}
+
+function getStreak(formHistory) {
+  if (!formHistory || formHistory.length === 0) return { type: null, count: 0 };
+  const last = formHistory[formHistory.length - 1];
+  let count = 0;
+  for (let i = formHistory.length - 1; i >= 0; i--) {
+    if (formHistory[i] === last) count++;
+    else break;
+  }
+  return { type: last, count };
+}
+
+function playerCard(label, player, statKey, statFmt) {
+  if (!player) return '';
+  const value = statKey ? (player[statKey] || 0) : '';
+  const formatted = statFmt ? statFmt(value, player) : value;
+  return `
+    <div class="mi-player-card">
+      <div class="mi-player-label">${label}</div>
+      <div class="mi-player-name">${player.name}</div>
+      <div class="mi-player-meta">#${player.number} &middot; ${player.position}</div>
+      <div class="mi-player-value">${formatted}</div>
+    </div>
+  `;
+}
+
+function showMatchInsights(week, homeId, awayId) {
+  const home = getTeam(homeId);
+  const away = getTeam(awayId);
+  if (!home || !away) return;
+
+  const homeAgg = computeTeamAggregates(homeId);
+  const awayAgg = computeTeamAggregates(awayId);
+  const homeTop = findTopPlayers(homeId);
+  const awayTop = findTopPlayers(awayId);
+  const h2h = findHeadToHead(homeId, awayId);
+  const stories = generateStoryline(home, away, homeAgg, awayAgg, h2h);
+
+  // Ensure overlay exists
+  let overlay = document.getElementById('match-insights-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'match-insights-overlay';
+    overlay.className = 'match-insights-overlay';
+    overlay.innerHTML = '<div class="match-insights-modal" id="match-insights-modal"></div>';
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeMatchInsights();
+    });
+    document.body.appendChild(overlay);
+  }
+
+  const wkData = scheduleData.find(w => w.week === week);
+  const gameData = wkData && wkData.games.find(g => g.home === homeId && g.away === awayId);
+  const dateStr = wkData ? new Date(wkData.date + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }) : '';
+  const timeStr = gameData ? gameData.time : '';
+
+  const avg = (val, n) => n > 0 ? (val / n).toFixed(1) : '0.0';
+  const homePPG = avg(home.pointsFor, homeAgg.gamesPlayed);
+  const awayPPG = avg(away.pointsFor, awayAgg.gamesPlayed);
+  const homeYPG = avg(homeAgg.passYards + homeAgg.rushYards, homeAgg.gamesPlayed);
+  const awayYPG = avg(awayAgg.passYards + awayAgg.rushYards, awayAgg.gamesPlayed);
+  const homeYAllowed = avg(homeAgg.yardsAllowed, homeAgg.gamesPlayed);
+  const awayYAllowed = avg(awayAgg.yardsAllowed, awayAgg.gamesPlayed);
+  const homePassPG = avg(homeAgg.passYards, homeAgg.gamesPlayed);
+  const awayPassPG = avg(awayAgg.passYards, awayAgg.gamesPlayed);
+  const homeRushPG = avg(homeAgg.rushYards, homeAgg.gamesPlayed);
+  const awayRushPG = avg(awayAgg.rushYards, awayAgg.gamesPlayed);
+
+  const statRow = (label, homeV, awayV, betterHigh = true, isPct = false) => {
+    const hv = parseFloat(homeV);
+    const av = parseFloat(awayV);
+    const homeBetter = betterHigh ? hv > av : hv < av;
+    const awayBetter = betterHigh ? av > hv : av < hv;
+    return `
+      <div class="mi-comparison-row">
+        <span class="mi-comp-val ${homeBetter ? 'mi-comp-better' : ''}">${homeV}</span>
+        <span class="mi-comp-label">${label}</span>
+        <span class="mi-comp-val ${awayBetter ? 'mi-comp-better' : ''}">${awayV}</span>
+      </div>
+    `;
+  };
+
+  const formPill = (result) => {
+    const cls = result === 'W' ? 'form-w' : result === 'L' ? 'form-l' : 'form-t';
+    return `<span class="mi-form-pill ${cls}">${result}</span>`;
+  };
+
+  const homeForm = homeAgg.formHistory.slice(-5).map(formPill).join('') || '<span style="color:var(--text-muted); font-size:0.8rem;">No games yet</span>';
+  const awayForm = awayAgg.formHistory.slice(-5).map(formPill).join('') || '<span style="color:var(--text-muted); font-size:0.8rem;">No games yet</span>';
+
+  let h2hHtml = '';
+  if (h2h.length > 0) {
+    h2hHtml = `
+      <div class="mi-section-title">Head-to-Head This Season</div>
+      <div class="mi-h2h-list">
+        ${h2h.map(m => {
+          const homeWon = m.winner === 'a';
+          const awayWon = m.winner === 'b';
+          return `
+            <div class="mi-h2h-row">
+              <span class="mi-h2h-team ${homeWon ? 'mi-h2h-winner' : ''}">${home.name}</span>
+              <span class="mi-h2h-score">${m.aScore} - ${m.bScore}</span>
+              <span class="mi-h2h-team ${awayWon ? 'mi-h2h-winner' : ''}">${away.name}</span>
+              <span class="mi-h2h-week">Wk ${m.week}</span>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+  }
+
+  const modal = document.getElementById('match-insights-modal');
+  modal.innerHTML = `
+    <button class="close-detail" onclick="closeMatchInsights()">&times;</button>
+
+    <div class="mi-header">
+      <div class="mi-eyebrow">Match Preview &middot; Week ${week} &middot; ${dateStr}${timeStr ? ' &middot; ' + timeStr : ''}</div>
+      <div class="mi-matchup">
+        <div class="mi-team-block mi-team-home">
+          <img src="${home.logo}" alt="${home.name}" class="mi-team-logo">
+          <div class="mi-team-name">${home.name}</div>
+          <div class="mi-team-record">${home.wins}-${home.losses}${home.ties?'-'+home.ties:''}</div>
+        </div>
+        <div class="mi-vs">
+          <div class="mi-vs-text">VS</div>
+          <div class="mi-vs-week">Wk ${week}</div>
+        </div>
+        <div class="mi-team-block mi-team-away">
+          <img src="${away.logo}" alt="${away.name}" class="mi-team-logo">
+          <div class="mi-team-name">${away.name}</div>
+          <div class="mi-team-record">${away.wins}-${away.losses}${away.ties?'-'+away.ties:''}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mi-storylines">
+      ${stories.map(s => `
+        <div class="mi-story">
+          <div class="mi-story-headline">${s.headline}</div>
+          <div class="mi-story-body">${s.body}</div>
+        </div>
+      `).join('')}
+    </div>
+
+    <div class="mi-section-title">Recent Form (last 5)</div>
+    <div class="mi-form-grid">
+      <div class="mi-form-side">
+        <span class="mi-form-team">${home.name}</span>
+        <div class="mi-form-pills">${homeForm}</div>
+      </div>
+      <div class="mi-form-side mi-form-side-right">
+        <span class="mi-form-team">${away.name}</span>
+        <div class="mi-form-pills">${awayForm}</div>
+      </div>
+    </div>
+
+    ${h2hHtml}
+
+    <div class="mi-section-title">Team Comparison &middot; Per Game Averages</div>
+    <div class="mi-comparison">
+      <div class="mi-comp-header">
+        <span>${home.name}</span>
+        <span></span>
+        <span>${away.name}</span>
+      </div>
+      ${statRow('Points/G', homePPG, awayPPG)}
+      ${statRow('Total YDS/G', homeYPG, awayYPG)}
+      ${statRow('Pass YDS/G', homePassPG, awayPassPG)}
+      ${statRow('Rush YDS/G', homeRushPG, awayRushPG)}
+      ${statRow('YDS Allowed/G', homeYAllowed, awayYAllowed, false)}
+      ${statRow('Sacks', homeAgg.sacks.toFixed(0), awayAgg.sacks.toFixed(0))}
+      ${statRow('Def INTs', homeAgg.defInts.toFixed(0), awayAgg.defInts.toFixed(0))}
+      ${statRow('Turnover Diff', (homeAgg.defInts - homeAgg.interceptions).toFixed(0), (awayAgg.defInts - awayAgg.interceptions).toFixed(0))}
+    </div>
+
+    <div class="mi-section-title">Players To Watch</div>
+    <div class="mi-players-grid">
+      <div class="mi-players-side">
+        <div class="mi-players-team">${home.name}</div>
+        ${playerCard('Top Passer', homeTop.topPasser, 'passYards', v => `${v} pass yds${homeTop.topPasser && homeTop.topPasser.passTDs ? ' / ' + homeTop.topPasser.passTDs + ' TD' : ''}`)}
+        ${playerCard('Top Receiver', homeTop.topReceiver, 'recYards', v => `${v} rec yds${homeTop.topReceiver && homeTop.topReceiver.recTDs ? ' / ' + homeTop.topReceiver.recTDs + ' TD' : ''}`)}
+        ${playerCard('Top Defender', homeTop.topDB, null, (_, p) => `${p.defInts||0} INT · ${p.pbu||0} PBU · ${p.flagPulls||0} FP`)}
+      </div>
+      <div class="mi-players-side">
+        <div class="mi-players-team">${away.name}</div>
+        ${playerCard('Top Passer', awayTop.topPasser, 'passYards', v => `${v} pass yds${awayTop.topPasser && awayTop.topPasser.passTDs ? ' / ' + awayTop.topPasser.passTDs + ' TD' : ''}`)}
+        ${playerCard('Top Receiver', awayTop.topReceiver, 'recYards', v => `${v} rec yds${awayTop.topReceiver && awayTop.topReceiver.recTDs ? ' / ' + awayTop.topReceiver.recTDs + ' TD' : ''}`)}
+        ${playerCard('Top Defender', awayTop.topDB, null, (_, p) => `${p.defInts||0} INT · ${p.pbu||0} PBU · ${p.flagPulls||0} FP`)}
+      </div>
+    </div>
+  `;
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMatchInsights() {
+  const overlay = document.getElementById('match-insights-overlay');
+  if (overlay) {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
 /* ── Keyboard shortcut for closing modals ── */
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeGameDetail();
     closePlayerInsights();
+    closeTeamLeadersFullList();
+    closeMatchInsights();
   }
 });
 
