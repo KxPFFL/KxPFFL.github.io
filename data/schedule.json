@@ -285,48 +285,48 @@
       {
         "home": "warbred",
         "away": "desert-lions",
-        "homeScore": null,
-        "awayScore": null,
+        "homeScore": 6,
+        "awayScore": 20,
         "time": "9:30 AM",
         "location": "Field A"
       },
       {
         "home": "pali-gliders",
         "away": "warriors",
-        "homeScore": null,
-        "awayScore": null,
+        "homeScore": 34,
+        "awayScore": 13,
         "time": "10:30 AM",
         "location": "Field A"
       },
       {
         "home": "lob",
         "away": "k2",
-        "homeScore": null,
-        "awayScore": null,
+        "homeScore": 14,
+        "awayScore": 0,
         "time": "11:30 AM",
         "location": "Field A"
       },
       {
         "home": "all-madden",
         "away": "good-guys",
-        "homeScore": null,
-        "awayScore": null,
+        "homeScore": 10,
+        "awayScore": 0,
         "time": "12:30 PM",
         "location": "Field A"
       },
       {
         "home": "falestine-falcons",
         "away": "darkside",
-        "homeScore": null,
-        "awayScore": null,
+        "homeScore": 14,
+        "awayScore": 6,
         "time": "1:30 PM",
         "location": "Field A"
       },
       {
         "home": "pak-lions",
         "away": "gmob",
-        "homeScore": null,
-        "awayScore": null,
+        "homeScore": 0,
+        "awayScore": 10,
         "time": "2:30 PM",
         "location": "Field A"
       }
