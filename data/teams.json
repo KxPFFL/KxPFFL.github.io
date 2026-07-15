@@ -4,10 +4,10 @@
     "name": "All Madden",
     "logo": "images/All Madden.PNG",
     "wins": 3,
-    "losses": 3,
+    "losses": 4,
     "ties": 0,
-    "pointsFor": 56,
-    "pointsAgainst": 50,
+    "pointsFor": 59,
+    "pointsAgainst": 64,
     "roster": [
       {
         "number": 12,
@@ -457,10 +457,10 @@
     "name": "Darkside",
     "logo": "images/Darkside.JPG",
     "wins": 1,
-    "losses": 5,
+    "losses": 6,
     "ties": 0,
     "pointsFor": 24,
-    "pointsAgainst": 96,
+    "pointsAgainst": 118,
     "roster": [
       {
         "number": 10,
@@ -888,11 +888,11 @@
     "id": "desert-lions",
     "name": "Desert Lions",
     "logo": "images/DesertLions.PNG",
-    "wins": 6,
+    "wins": 7,
     "losses": 0,
     "ties": 0,
-    "pointsFor": 112,
-    "pointsAgainst": 36,
+    "pointsFor": 124,
+    "pointsAgainst": 43,
     "roster": [
       {
         "number": 1,
@@ -1321,10 +1321,10 @@
     "name": "Falestine Falcons",
     "logo": "images/Falastinee Falcons .jpeg",
     "wins": 3,
-    "losses": 3,
+    "losses": 4,
     "ties": 0,
-    "pointsFor": 46,
-    "pointsAgainst": 71,
+    "pointsFor": 60,
+    "pointsAgainst": 91,
     "roster": [
       {
         "number": 1,
@@ -1626,10 +1626,10 @@
     "id": "gmob",
     "name": "G-MOB",
     "logo": "images/GMOB.PNG",
-    "wins": 5,
+    "wins": 6,
     "losses": 1,
     "ties": 0,
-    "pointsFor": 72,
+    "pointsFor": 94,
     "pointsAgainst": 45,
     "roster": [
       {
@@ -2101,10 +2101,10 @@
     "name": "K2",
     "logo": "images/K2.JPG",
     "wins": 3,
-    "losses": 3,
+    "losses": 4,
     "ties": 0,
-    "pointsFor": 57,
-    "pointsAgainst": 59,
+    "pointsFor": 63,
+    "pointsAgainst": 79,
     "roster": [
       {
         "number": 12,
@@ -2490,11 +2490,11 @@
     "id": "lob",
     "name": "LOB",
     "logo": "images/LegionOfBoom.PNG",
-    "wins": 3,
+    "wins": 5,
     "losses": 3,
     "ties": 0,
-    "pointsFor": 58,
-    "pointsAgainst": 35,
+    "pointsFor": 92,
+    "pointsAgainst": 52,
     "roster": [
       {
         "number": 17,
@@ -2923,10 +2923,10 @@
     "name": "PAK LIONS",
     "logo": "images/Pak Lions.jpeg",
     "wins": 1,
-    "losses": 5,
+    "losses": 6,
     "ties": 0,
-    "pointsFor": 14,
-    "pointsAgainst": 71,
+    "pointsFor": 21,
+    "pointsAgainst": 83,
     "roster": [
       {
         "number": 1,
@@ -3375,10 +3375,10 @@
     "id": "warbred",
     "name": "WarBred",
     "logo": "images/Warbred.jpeg",
-    "wins": 3,
+    "wins": 4,
     "losses": 3,
     "ties": 0,
-    "pointsFor": 76,
+    "pointsFor": 90,
     "pointsAgainst": 44,
     "roster": [
       {
@@ -3765,11 +3765,11 @@
     "id": "warriors",
     "name": "Warriors",
     "logo": "images/Warrirors.PNG",
-    "wins": 4,
+    "wins": 5,
     "losses": 2,
     "ties": 0,
-    "pointsFor": 81,
-    "pointsAgainst": 56,
+    "pointsFor": 101,
+    "pointsAgainst": 62,
     "roster": [
       {
         "number": 7,
@@ -4282,10 +4282,10 @@
     "name": "Pali Gliders",
     "logo": "images/Paligliders.JPG",
     "wins": 2,
-    "losses": 4,
+    "losses": 5,
     "ties": 0,
     "pointsFor": 48,
-    "pointsAgainst": 59,
+    "pointsAgainst": 73,
     "roster": [
       {
         "number": 1,
