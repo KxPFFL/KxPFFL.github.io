@@ -2415,7 +2415,7 @@
         "passAtt": 0,
         "passTDs": 0,
         "rushAtt": 1,
-        "defInts": 0,
+        "defInts": 3,
         "pbu": 0,
         "rushTDs": 0,
         "recTDs": 6,
@@ -2897,7 +2897,7 @@
       },
       {
         "number": 30,
-        "name": "No Name",
+        "name": "Charles II",
         "position": "WR",
         "passComp": 0,
         "passAtt": 0,
