@@ -768,6 +768,23 @@ img { max-width: 100%; display: block; }
   margin-top: 0.4rem;
 }
 
+.friendly-badge {
+  display: inline-block;
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.game-card.game-friendly {
+  border-style: dashed;
+}
+
 .game-card.game-forfeit {
   opacity: 0.9;
 }

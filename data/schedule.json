@@ -435,9 +435,45 @@
   {
     "week": 9,
     "date": "2026-07-26",
-    "games": [],
-    "tbd": true,
-    "note": "Cross-Conference Play — Matchups TBD"
+    "games": [
+      {
+        "home": "falestine-falcons",
+        "away": "pak-lions",
+        "homeScore": 20,
+        "awayScore": 18,
+        "time": "9:30 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "all-madden",
+        "away": "k2",
+        "homeScore": 8,
+        "awayScore": 6,
+        "time": "10:30 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "warriors",
+        "away": "warbred",
+        "homeScore": 21,
+        "awayScore": 8,
+        "time": "11:30 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "k2",
+        "away": "pali-gliders",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "12:30 PM",
+        "location": "Field A",
+        "friendly": true,
+        "friendlyNote": "Friendly game — Pali Gliders awarded win (opponent forfeited scheduled game)",
+        "awardWinTo": "away",
+        "awardPFTo": "away",
+        "awardPFAmount": 10
+      }
+    ]
   },
   {
     "week": 10,

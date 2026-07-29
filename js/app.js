@@ -148,39 +148,47 @@ function renderSchedule(containerId) {
       const played = game.homeScore !== null;
       const noContest = !!game.noContest;
       const forfeit = !!game.forfeit;
+      const friendly = !!game.friendly;
       let homeWon = played && game.homeScore > game.awayScore;
       let awayWon = played && game.awayScore > game.homeScore;
       if (forfeit && game.forfeitWinner) {
         homeWon = game.forfeitWinner === 'home';
         awayWon = game.forfeitWinner === 'away';
       } else if (forfeit && !game.forfeitWinner) {
-        // Legacy forfeit games (default: home team won)
         homeWon = true;
         awayWon = false;
       }
-      const homeBadge = homeWon ? '<span class="result-badge result-win">W</span>'
-                       : awayWon ? '<span class="result-badge result-loss">L</span>' : '';
-      const awayBadge = awayWon ? '<span class="result-badge result-win">W</span>'
-                       : homeWon ? '<span class="result-badge result-loss">L</span>' : '';
+      // No W/L badges for friendly games unless one side was awarded the win
+      let homeBadge = '', awayBadge = '';
+      if (friendly) {
+        if (game.awardWinTo === 'home') homeBadge = '<span class="result-badge result-win">W</span>';
+        if (game.awardWinTo === 'away') awayBadge = '<span class="result-badge result-win">W</span>';
+      } else {
+        homeBadge = homeWon ? '<span class="result-badge result-win">W</span>'
+                   : awayWon ? '<span class="result-badge result-loss">L</span>' : '';
+        awayBadge = awayWon ? '<span class="result-badge result-win">W</span>'
+                   : homeWon ? '<span class="result-badge result-loss">L</span>' : '';
+      }
 
       let scoreHtml;
       if (noContest) {
         scoreHtml = `<span class="no-contest-badge">No Contest</span>`;
       } else if (forfeit) {
-        // Only show score if it's meaningful (e.g., 6-0 from earlier forfeits)
         const hasScore = (game.homeScore || 0) + (game.awayScore || 0) > 0;
         scoreHtml = hasScore
           ? `<div class="score">${game.homeScore} - ${game.awayScore}</div><span class="forfeit-badge">Forfeit</span>`
           : `<span class="forfeit-badge">Forfeit</span>`;
+      } else if (friendly) {
+        scoreHtml = `<span class="friendly-badge">Friendly</span>`;
       } else if (played) {
         scoreHtml = `<div class="score">${game.homeScore} - ${game.awayScore}</div>`;
       } else {
         scoreHtml = `<span class="upcoming-badge">Upcoming</span>`;
       }
 
-      // Forfeit games don't have box scores (no stats recorded)
-      const showBoxScore = played && !forfeit;
-      const isUpcoming = !played && !noContest && !forfeit;
+      // Friendly games have stats — allow box score
+      const showBoxScore = (played && !forfeit) || friendly;
+      const isUpcoming = !played && !noContest && !forfeit && !friendly;
       let cardClickAttr = '';
       if (showBoxScore) {
         cardClickAttr = `onclick="showGameDetail(${week.week}, '${game.home}', '${game.away}')" style="cursor:pointer;"`;
@@ -189,7 +197,7 @@ function renderSchedule(containerId) {
       }
 
       html += `
-        <div class="game-card ${played ? 'game-played' : ''} ${noContest ? 'game-no-contest' : ''} ${forfeit ? 'game-forfeit' : ''}" ${cardClickAttr}>
+        <div class="game-card ${played ? 'game-played' : ''} ${noContest ? 'game-no-contest' : ''} ${forfeit ? 'game-forfeit' : ''} ${friendly ? 'game-friendly' : ''}" ${cardClickAttr}>
           <div class="game-team">
             ${teamLogo(home, 32)}
             <span>${home.name}</span>
@@ -200,6 +208,7 @@ function renderSchedule(containerId) {
             <div class="game-time">${game.time} &middot; ${game.location}</div>
             ${noContest ? `<div class="no-contest-reason">${game.noContestReason || ''}</div>` : ''}
             ${forfeit ? `<div class="no-contest-reason">${game.forfeitReason || ''}</div>` : ''}
+            ${friendly ? `<div class="no-contest-reason">${game.friendlyNote || 'Friendly game — stats only'}</div>` : ''}
           </div>
           <div class="game-team away">
             ${awayBadge}
@@ -602,7 +611,7 @@ function renderPlayerLeaders(allPlayers) {
     {
       key: 'compPct', label: 'Completion %', icon: 'QBs',
       compute: p => (p.passAtt || 0) > 0 ? (p.passComp / p.passAtt) * 100 : 0,
-      filter: p => (p.passAtt || 0) >= 5,
+      filter: p => (p.passAtt || 0) >= 11,
       format: v => v.toFixed(1) + '%',
       meta: p => `${p.passComp}/${p.passAtt}`
     },
