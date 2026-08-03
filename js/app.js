@@ -118,10 +118,11 @@ function renderSchedule(containerId) {
     const date = new Date(week.date + 'T00:00:00');
     const dateStr = date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
 
+    const isPlayoffs = week.week >= 10;
     html += `
       <div class="schedule-week">
         <div class="week-header">
-          <h3>Week ${week.week}</h3>
+          <h3>Week ${week.week}${isPlayoffs ? ' <span class="playoffs-badge">Playoffs</span>' : ''}</h3>
           <span class="week-date">${dateStr}</span>
         </div>
     `;

@@ -478,9 +478,40 @@
   {
     "week": 10,
     "date": "2026-08-02",
-    "games": [],
-    "tbd": true,
-    "note": "Quarterfinals — Matchups TBD"
+    "games": [
+      {
+        "home": "desert-lions",
+        "away": "all-madden",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "9:30 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "gmob",
+        "away": "k2",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "10:30 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "pali-gliders",
+        "away": "warriors",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "11:30 AM",
+        "location": "Field A"
+      },
+      {
+        "home": "lob",
+        "away": "warbred",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "12:30 PM",
+        "location": "Field A"
+      }
+    ]
   },
   {
     "week": 11,

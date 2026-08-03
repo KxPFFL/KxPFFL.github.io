@@ -781,6 +781,21 @@ img { max-width: 100%; display: block; }
   text-transform: uppercase;
 }
 
+.playoffs-badge {
+  display: inline-block;
+  background: rgba(220, 53, 69, 0.15);
+  color: #ff5252;
+  border: 1px solid rgba(220, 53, 69, 0.5);
+  padding: 0.2rem 0.7rem;
+  border-radius: 6px;
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-left: 0.75rem;
+  vertical-align: middle;
+}
+
 .game-card.game-friendly {
   border-style: dashed;
 }
