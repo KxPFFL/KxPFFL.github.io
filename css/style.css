@@ -781,6 +781,115 @@ img { max-width: 100%; display: block; }
   text-transform: uppercase;
 }
 
+/* Champions Banner */
+.champions-banner {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 2px solid rgba(250, 204, 21, 0.5);
+  background:
+    radial-gradient(ellipse at top left, rgba(250, 204, 21, 0.18), transparent 60%),
+    radial-gradient(ellipse at bottom right, rgba(217, 119, 6, 0.18), transparent 60%),
+    linear-gradient(135deg, #1a1410 0%, #0d0a08 100%);
+  padding: 2.5rem 2rem;
+  box-shadow: 0 10px 40px rgba(250, 204, 21, 0.15);
+}
+
+.champions-glow {
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 60%;
+  height: 200%;
+  background: radial-gradient(ellipse, rgba(250, 204, 21, 0.08), transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+.champions-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.champions-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fbbf24;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding: 0.4rem 1rem;
+  border: 1px solid rgba(250, 204, 21, 0.4);
+  border-radius: 40px;
+  background: rgba(250, 204, 21, 0.08);
+  margin-bottom: 1.5rem;
+}
+
+.champions-trophy {
+  font-size: 1.1rem;
+  filter: drop-shadow(0 0 6px rgba(250, 204, 21, 0.6));
+}
+
+.champions-team {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.champions-team img {
+  width: 140px;
+  height: 140px;
+  border-radius: 20px;
+  object-fit: cover;
+  border: 3px solid rgba(250, 204, 21, 0.6);
+  box-shadow:
+    0 0 40px rgba(250, 204, 21, 0.35),
+    0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.champions-text {
+  text-align: left;
+}
+
+.champions-text h2 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin: 0 0 0.5rem;
+  color: var(--text);
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.champions-text h2 span {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.champions-text p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin: 0;
+  font-style: italic;
+  max-width: 420px;
+}
+
+@media (max-width: 768px) {
+  .champions-banner { padding: 1.75rem 1rem; }
+  .champions-eyebrow { font-size: 0.7rem; letter-spacing: 2px; }
+  .champions-team { flex-direction: column; gap: 1.2rem; }
+  .champions-team img { width: 110px; height: 110px; }
+  .champions-text { text-align: center; }
+  .champions-text h2 { font-size: 1.9rem; }
+  .champions-text p { font-size: 0.95rem; }
+}
+
 .playoffs-badge {
   display: inline-block;
   background: rgba(220, 53, 69, 0.15);
