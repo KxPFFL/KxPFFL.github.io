@@ -1,0 +1,13 @@
+{
+  "activeSeason": "fall-2026",
+  "seasons": [
+    {
+      "id": "summer-2026",
+      "label": "Summer 2026"
+    },
+    {
+      "id": "fall-2026",
+      "label": "Fall 2026"
+    }
+  ]
+}

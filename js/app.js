@@ -2,16 +2,62 @@
 let teamsData = [];
 let scheduleData = [];
 let gamesData = [];
+let seasonsConfig = null;
+let currentSeasonId = null;
+
+function getCurrentSeasonId() {
+  // Priority: URL param > localStorage > config default
+  const params = new URLSearchParams(window.location.search);
+  const urlSeason = params.get('season');
+  if (urlSeason) return urlSeason;
+  const stored = localStorage.getItem('kxp_season');
+  if (stored) return stored;
+  return seasonsConfig ? seasonsConfig.activeSeason : 'summer-2026';
+}
+
+function setCurrentSeason(seasonId) {
+  currentSeasonId = seasonId;
+  localStorage.setItem('kxp_season', seasonId);
+  // Update URL without reload
+  const url = new URL(window.location.href);
+  url.searchParams.set('season', seasonId);
+  window.history.replaceState({}, '', url);
+  // Reload page data
+  window.location.reload();
+}
 
 async function loadData() {
+  // Load seasons config first
+  const seasonsRes = await fetch('data/seasons.json');
+  seasonsConfig = await seasonsRes.json();
+  currentSeasonId = getCurrentSeasonId();
+  // Validate season exists in config; fall back to activeSeason
+  if (!seasonsConfig.seasons.find(s => s.id === currentSeasonId)) {
+    currentSeasonId = seasonsConfig.activeSeason;
+  }
+  // Load season-specific data
+  const base = `data/seasons/${currentSeasonId}`;
   const [teamsRes, scheduleRes, gamesRes] = await Promise.all([
-    fetch('data/teams.json'),
-    fetch('data/schedule.json'),
-    fetch('data/games.json')
+    fetch(`${base}/teams.json`),
+    fetch(`${base}/schedule.json`),
+    fetch(`${base}/games.json`)
   ]);
   teamsData = await teamsRes.json();
   scheduleData = await scheduleRes.json();
   gamesData = await gamesRes.json();
+}
+
+function renderSeasonSwitcher() {
+  const container = document.getElementById('season-switcher');
+  if (!container || !seasonsConfig) return;
+  const currentLabel = (seasonsConfig.seasons.find(s => s.id === currentSeasonId) || {}).label || currentSeasonId;
+  container.innerHTML = `
+    <select class="season-select" onchange="setCurrentSeason(this.value)">
+      ${seasonsConfig.seasons.map(s =>
+        `<option value="${s.id}" ${s.id === currentSeasonId ? 'selected' : ''}>${s.label}</option>`
+      ).join('')}
+    </select>
+  `;
 }
 
 function getTeam(id) {
@@ -197,8 +243,13 @@ function renderSchedule(containerId) {
         cardClickAttr = `onclick="showMatchInsights(${week.week}, '${game.home}', '${game.away}')" style="cursor:pointer;"`;
       }
 
+      const labelBanner = game.gameLabel
+        ? `<div class="game-label-banner ${game.gameLabel === 'Championship' ? 'label-championship' : ''}">${game.gameLabel === 'Championship' ? '🏆 ' : ''}${game.gameLabel}${game.gameLabel === 'Championship' ? ' 🏆' : ''}</div>`
+        : '';
+
       html += `
-        <div class="game-card ${played ? 'game-played' : ''} ${noContest ? 'game-no-contest' : ''} ${forfeit ? 'game-forfeit' : ''} ${friendly ? 'game-friendly' : ''}" ${cardClickAttr}>
+        <div class="game-card ${played ? 'game-played' : ''} ${noContest ? 'game-no-contest' : ''} ${forfeit ? 'game-forfeit' : ''} ${friendly ? 'game-friendly' : ''} ${game.gameLabel ? 'game-labeled' : ''}" ${cardClickAttr}>
+          ${labelBanner}
           <div class="game-team">
             ${teamLogo(home, 32)}
             <span>${home.name}</span>
@@ -1662,6 +1713,7 @@ document.addEventListener('keydown', (e) => {
 document.addEventListener('DOMContentLoaded', async () => {
   await loadData();
   setActiveNav();
+  renderSeasonSwitcher();
 
   // Homepage
   renderStandings('standings');

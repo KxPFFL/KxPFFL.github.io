@@ -482,32 +482,32 @@
       {
         "home": "desert-lions",
         "away": "all-madden",
-        "homeScore": null,
-        "awayScore": null,
+        "homeScore": 7,
+        "awayScore": 0,
         "time": "9:30 AM",
         "location": "Field A"
       },
       {
         "home": "gmob",
         "away": "k2",
-        "homeScore": null,
-        "awayScore": null,
+        "homeScore": 7,
+        "awayScore": 0,
         "time": "10:30 AM",
         "location": "Field A"
       },
       {
         "home": "pali-gliders",
         "away": "warriors",
-        "homeScore": null,
-        "awayScore": null,
+        "homeScore": 0,
+        "awayScore": 7,
         "time": "11:30 AM",
         "location": "Field A"
       },
       {
         "home": "lob",
         "away": "warbred",
-        "homeScore": null,
-        "awayScore": null,
+        "homeScore": 7,
+        "awayScore": 0,
         "time": "12:30 PM",
         "location": "Field A"
       }
@@ -516,8 +516,34 @@
   {
     "week": 11,
     "date": "2026-08-09",
-    "games": [],
-    "tbd": true,
-    "note": "Semifinals & Championship — Matchups TBD"
+    "games": [
+      {
+        "home": "desert-lions",
+        "away": "lob",
+        "homeScore": 7,
+        "awayScore": 0,
+        "time": "9:30 AM",
+        "location": "Field A",
+        "gameLabel": "Semifinal"
+      },
+      {
+        "home": "gmob",
+        "away": "warriors",
+        "homeScore": 7,
+        "awayScore": 0,
+        "time": "10:30 AM",
+        "location": "Field A",
+        "gameLabel": "Semifinal"
+      },
+      {
+        "home": "gmob",
+        "away": "desert-lions",
+        "homeScore": 28,
+        "awayScore": 0,
+        "time": "11:30 AM",
+        "location": "Field A",
+        "gameLabel": "Championship"
+      }
+    ]
   }
 ]

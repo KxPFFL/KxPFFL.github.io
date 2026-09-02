@@ -1,0 +1,289 @@
+[
+  {
+    "week": 1,
+    "date": "2026-09-05",
+    "games": [
+      {
+        "home": "lob",
+        "away": "falestine-fighters",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "6:00 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "pak-lions",
+        "away": "blitz",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "7:00 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "pali-gliders",
+        "away": "warbred",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "8:00 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "blackout",
+        "away": "la-familia",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "9:00 PM",
+        "location": "Field A"
+      }
+    ]
+  },
+  {
+    "week": 2,
+    "date": "2026-09-12",
+    "games": [
+      {
+        "home": "la-familia",
+        "away": "falestine-fighters",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "6:00 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "lob",
+        "away": "pak-lions",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "7:00 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "pali-gliders",
+        "away": "blitz",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "8:00 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "blackout",
+        "away": "warbred",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "9:00 PM",
+        "location": "Field A"
+      }
+    ]
+  },
+  {
+    "week": 3,
+    "date": "2026-09-19",
+    "games": [
+      {
+        "home": "warbred",
+        "away": "blitz",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "6:00 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "pali-gliders",
+        "away": "lob",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "7:00 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "blackout",
+        "away": "falestine-fighters",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "8:00 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "la-familia",
+        "away": "pak-lions",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "9:00 PM",
+        "location": "Field A"
+      }
+    ]
+  },
+  {
+    "week": 4,
+    "date": "2026-09-26",
+    "games": [],
+    "tbd": true,
+    "note": "League-Wide Bye"
+  },
+  {
+    "week": 5,
+    "date": "2026-10-03",
+    "games": [
+      {
+        "home": "warbred",
+        "away": "lob",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "6:00 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "la-familia",
+        "away": "pali-gliders",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "7:00 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "falestine-fighters",
+        "away": "pak-lions",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "8:00 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "blackout",
+        "away": "blitz",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "9:00 PM",
+        "location": "Field A"
+      }
+    ]
+  },
+  {
+    "week": 6,
+    "date": "2026-10-10",
+    "games": [
+      {
+        "home": "blitz",
+        "away": "lob",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "6:00 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "falestine-fighters",
+        "away": "pali-gliders",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "7:00 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "warbred",
+        "away": "la-familia",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "8:00 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "blackout",
+        "away": "pak-lions",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "9:00 PM",
+        "location": "Field A"
+      }
+    ]
+  },
+  {
+    "week": 7,
+    "date": "2026-10-17",
+    "games": [
+      {
+        "home": "pak-lions",
+        "away": "pali-gliders",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "6:00 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "falestine-fighters",
+        "away": "warbred",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "7:00 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "blackout",
+        "away": "lob",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "8:00 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "blitz",
+        "away": "la-familia",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "9:00 PM",
+        "location": "Field A"
+      }
+    ]
+  },
+  {
+    "week": 8,
+    "date": "2026-10-24",
+    "games": [
+      {
+        "home": "pak-lions",
+        "away": "warbred",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "6:00 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "blitz",
+        "away": "falestine-fighters",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "7:00 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "lob",
+        "away": "la-familia",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "8:00 PM",
+        "location": "Field A"
+      },
+      {
+        "home": "blackout",
+        "away": "pali-gliders",
+        "homeScore": null,
+        "awayScore": null,
+        "time": "9:00 PM",
+        "location": "Field A"
+      }
+    ]
+  },
+  {
+    "week": 9,
+    "date": "2026-10-31",
+    "games": [],
+    "tbd": true,
+    "note": "Playoff Round 1 — Seeded matchups (1v8, 2v7, 3v6, 4v5)"
+  },
+  {
+    "week": 10,
+    "date": "2026-11-07",
+    "games": [],
+    "tbd": true,
+    "note": "Semifinals & Championship — Matchups TBD"
+  }
+]
